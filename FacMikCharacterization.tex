@@ -1,6 +1,8 @@
 \section{A characterization of regular languages  below $\omega_1$}
 
-We recall that, given a language $L$, the set $H_L$ is the set of tree types, and the set $V_L$ of context types of $L$. Both are finite when $L$ is regular. Following \cite{bp}, we use  games on types, either finite $\mathcal{X}(h_1, \dots, h_n)$ or infinite $\mathcal{X}(h_1, \dots, h_n, \dots)$ - same for context types-, for a given a language $L$.
+We recall that, given a language $L$, the set $H_L$ is the set of tree types, and the set $V_L$ of context types of $L$. Both are finite when $L$ is regular. Following \cite{bp}, for a given regular language of trees $L$ we define games on types $\mathcal{X}(h_1, \dots, h_n)$ and $\mathcal{X}(h_1, \dots, h_n, \dots)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $h_i$. 
+% deleted, because there is seemingly no place where we play contexts. 
+% Similarly we define games on types of contexts $\mathcal{X}(v_1, \dots, v_n)$ and $\mathcal{X}(v_1, \dots, v_n, \dots)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $v_i$
 
 
 
@@ -9,12 +11,11 @@ $\mathcal{H}_L:= \{(h_1, \dots, h_n)
 \mid 
 n \in \omega 
 $
-and alternator wins $\mathcal{X}(h_1, \dots, h_n)\}$
+and Alternator wins $\mathcal{X}(h_1, \dots, h_n)\}$
 and 
 $\mathcal{V}_L:= \{(v_1, \dots, v_n) \mid n \in \omega 
 $
-and alternator wins $\mathcal{X}(v_1, \dots, v_n)\}$.
-
+and Alternator wins $\mathcal{X}(v_1, \dots, v_n)\}$.
 Sets 
 $\mathcal{H}^\infty_L$ and $\mathcal{V}^\infty_L$ are defined analogously.
 
@@ -23,12 +24,12 @@ $\mathcal{H}^\infty_L$ and $\mathcal{V}^\infty_L$ are defined analogously.
 %the same way as $\mathcal{X}(h_1, \dots, h_n, \dots)$ with the added restriction that the first tree played by alternator must extend the multicontext $c$. 
 
 
-A type tree for $L$ is a tree over $\mathcal{H}_L$. For a given tree $t$, there is a type tree $\sigma_t$ induced by $t$ such that for every node $n \in \dom(\sigma_t)$, $\sigma_t(n)$ is the type of the tree $t.n$.
+A type tree for $L$ is a tree over the finite alphabet $\mathcal{H}_L$. For a given tree $t$, there is a type tree $\sigma_t$ induced by $t$ such that for every node $w \in \dom(\sigma_t)$, $\sigma_t(w)$ is the type of the tree $t.w$.
 
-Let $\sigma$ be a type tree, and $t$ a tree. $\sigma$ is locally consistent with $t$ if $\dom(\sigma)=\dom(t)$ and for every node $n \in \dom(t)$ such that $t(n)=a$, 
+Let $\sigma$ be a type tree, and $t$ a tree. We say that a type tree $\sigma$ is locally consistent with a tree $t$ if $\dom(\sigma)=\dom(t)$ and for every node $w \in \dom(t)$ such that $t(w)=a$, 
 \begin{itemize}
-\item if $n$ is a leaf, then $\sigma(n)$ is the type of $a$,
-\item if $n$ has two children $m_\ell$ and $m_r$, then $\sigma(n)$ is the the obtained by applying $a$ to the pair $(\sigma(m_\ell), \sigma(m_r))$.
+\item if $w$ is a leaf, then $\sigma(w)$ is the type of $a$,
+\item if $w$ has two children $m_\ell$ and $m_r$, then $\sigma(w)$ is the the obtained by applying $a$ to the pair $(\sigma(m_\ell), \sigma(m_r))$.
 \end{itemize}
 
 A finite strategy tree is a tuple
