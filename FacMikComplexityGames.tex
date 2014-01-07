@@ -1,0 +1,254 @@
+\section{Understanding the Complexity via Games}
+
+\subsection{Topological Games}
+Let $L$ and $M$ be two languages. The {\em Wadge game}
+$\mathcal{W}(L, M)$ is an infinite two-player game (player I and player II) of perfect information defined as follows. During a play,
+each player builds a tree, say $t_{I}$ and $t_{II}$. 
+In each round both players add a finite number of children to the leaves
+of their corresponding tree. Player I plays first and Player II is allowed to
+skip his turn but not forever.  Player II wins the game iff $t_{I} \in L
+\Leftrightarrow t_{II} \in M$.  Bill Wadge designed this game precisely in order
+to obtain a characterisation of continuous reducibility.
+\begin{lemma}[\cite{wadge}]
+Let $L, M$ be two languages. Then  $L \leq_W M$ iff Player II has a winning strategy in the game $\mathcal{W}(L, M)$.
+\end{lemma}
+
+An ordinal number is the order type of a well-ordered set. 
+%The finite ordinals are the natural numbers ($0, 1, 2, \dots$). 
+The least infinite ordinal is denoted by $\omega$ and corresponds to the order-type of the set of all natural numbers. We say that an ordinal $\alpha$ is countable if there is a bijection between $\alpha$ and $\omega$. The first uncountable ordinal is denoted by $\omega_1$.
+A subset $B$ of an ordinal $\alpha$ is said to be \emph{cofinal} if 
+for every $a \in \alpha$ there exists some $b \in B$ such that $a \in b$.
+The \emph{cofinality} of an ordinal $\alpha$ is thence the smallest ordinal $\beta$ that is the order type of a cofinal subset of $\alpha$.
+
+  From Borel determinacy,
+if both $L$ and $M$ are Borel, then $\mathcal{W}(L, M)$ is determined.
+As a consequence, a variant of Martin-Monk's result shows that $<_W$ is
+well-founded. The \emph{Wadge degree} for sets of finite Borel rank is
+inductively defined by:
+\begin{itemize}
+\item $d_W(\emptyset)=d_W(\emptyset^\complement)=1$,
+\item $d_W(L)=\sup\{d_W(K)+1\colon K \text{ non self dual}, K <_WL\}$ for $L>_W\emptyset$.
+\end{itemize}
+
+For instance, open, non-closed sets have degree 2, just like closed,
+non-open sets. All clopens have degree 1. 
+Let $\exp(\alpha) = \omega_1^\alpha$, and let 
+$\,{}^{\omega_1} \epsilon_0 = \sup_{n \in\omega} \exp^n(\omega_1)$, the least fixpoint of the 
+ordinal exponentiation of base $\omega_1$. This is known to be the
+height of the Wadge hierarchy of all tree languages (recognizable or
+not) of finite Borel rank. More precisely, if $L$ is ${\bf
+  \Sigma}^0_n$-complete for $n>1$, then $d_W(L) = \exp^{n-1}(1)$ for $n>1$  (cf. \cite{dup1}).
+
+For each degree there are exactly three equivalence
+classes with the same degree, represented by $U$, $U^\complement$ and
+$U^\pm = \{t \bigm | t(\epsilon) = a, t.0\in U \} \cup  \{t \bigm |
+t(\epsilon) \neq a, t.0\notin U \}$ for some non self-dual set $U$ and
+$a\in\Sigma$. It easy to check that $U, U^\complement <_W U^\pm$ and
+$U^\pm$ is self-dual.
+
+For each non self-dual set one can determine its sign, $+$
+or $-$, which specifies precisely the $\equiv_W$-class
+(cf. \cite{dup1}). For sets $U\subseteq T_\Sigma$ with $d_W(U)$ of countable cofinality, the sign
+is $+$ if $U$ is Wadge equivalent to the set of trees over $\Sigma
+\cup \{c\}$, $c\notin \Sigma$, which have no $c$ on the leftmost
+branch, or the first $c$ is in the node $0^i$ and $t.0^i \in U$. The
+sign is $-$ if $U$ is equivalent to the complement of this set. 
+For instance, $\emptyset$ and open, non-closed sets have sign -,
+while the whole space and closed, non-open sets have sign $+$.
+For sets of cofinality $\omega_1$, the definition is more complicated, but
+${\bf \Sigma}^0_n$-complete sets have sign $-$, and ${\bf
+  \Pi}^0_n$-complete sets have sign $+$. All self-dual sets by
+definition have sign $\pm$. Thus an ordinal $\alpha <\,
+{}^{\omega_1}\epsilon_0$ and a sign $\epsilon \in \{+,-,\pm\}$,
+determine a $\equiv_W$-class, denoted  $[\alpha]^\epsilon$. 
+
+\subsection{Set-Theoretical Operations}
+
+We start defining four basic operations on conciliatory sets of trees. Let $L, M \subseteq T^{\sf c}_\Sigma$, and assume that $\Sigma$ contains at least two letters, $a$ and $b$. Define
+{\em alternative} ($\lor$), {\em parallel composition}  ($\land$), {\em disjunctive product} ($\diamond$), and {\em
+conjunctive product} ($\mybox$) as
+\begin{align*}
+L \lor M = \,&\{t\colon t(\varepsilon) = a\,, t.0 \in L \text{ and } t.1 \in M \textrm{, or } t(\varepsilon) \neq a\}\,,\\
+L \land M = \,&\{t\colon t(\varepsilon) = a\,, t.0 \in L \textrm{ or } t(\varepsilon) \neq a\,, t.0 \in M\}\,,\\
+L \diamond M =\, &\{t\colon  t.0 \in L \textrm{ or } t.1 \in M\}\,,\\
+L \mybox M =\, &\{t\colon t.0 \in L \textrm{ and } t.1 \in M\}\,.
+\end{align*}
+Multifold alternatives and parallel compositions are performed from left to right, e.g.,  $L_1 \lor L_2 \lor L_3 \lor L_4 = (((L_1 \lor L_2) \lor L_3) \lor A_4 )$. It is easy to see that these four operations define associative and commutative operations on Wadge equivalence classes. The symbol $(L)^n$ denotes $\underbrace{L \land \ldots \land L}_{n}$.\label{automatapower}
+
+
+
+Another useful operation on sets is the following. Let $L, M \subseteq T^{\sf c}_\Sigma$. We define
+ the set $L \to M$ as the set of trees $t \in T^{\sf c}_{\Sigma\cup \{a\}}$, with $a \notin \Sigma$, satisfying any of the following conditions:
+
+\begin{itemize}
+\item $t.0 \in L$ and $a = t(10^n)$ for all $n$,
+\item $10^{n}$ is the first node on the path $10^*$ such that $a \neq t(10^{n})$ and $t.10^{n}0 \in M$.
+\end{itemize}
+A player in charge of $L \to M$ is like a player in charge of $L$ endowed with an extra move, which can be used only once, that erases everything played before. Then she can restart the play being in charge of $M$.  We say that  a non-self dual set $L\subseteq T_\Sigma$ is \emph{initializable} when $L \geq_W L \to L$.
+
+
+\begin{proposition}[\cite{dup3,dup95}]\label{p_2a}
+Let $L, M\subseteq T^{\sf c}_\Sigma$ be two non self dual sets, 
+\begin{enumerate}
+\item Assume that $M$ is initializable, that $L <_W M $ and that for every initializable set of trees $C$, if $L<_WC$, then $M \equiv_W C$ or $M^\complement \equiv_W C$. Then it holds that  $d_W(M)=d_W(L)\centerdot \omega_1$.
+\item Any set of Wadge degree $d_W(L)\centerdot \omega_1$ is initializable.
+\end{enumerate}
+\end{proposition}
+These properties of initializable sets will be very useful.
+
+\vspace{0.2cm}
+\noindent {\bf Sum and supremum :} \hspace{0.1cm}
+%%%addition
+Suppose that $L, M \subseteq T^{\sf c}_{\Sigma} $. We define the set $M+ L$ as $L \to M \lor M^\complement$. 
+%This set is weakly recognizable (\cite{dm7}). The weak alternating automaton recognizing it is denoted by $B + A$.
+From the point of view of the player in charge of the set $M+ L$  in a Wadge Game, everything goes as if she was starting the game being in charge of $L$. So, provided she plays in such a way that $a$ always holds in the rightmoust branch of the tree, the question whether the resulting infinite tree she will have produced at the end of the run belongs to $M+ L$  or not reduces to the question whether the tree starting from  the left son of the root belongs to $L$ or not. But at any moment of the run she can play a node $11^n$ not labelled with $a$. Then, everything looks like the whole (finite) tree played since the beginning of the game is erased and he is now in charge of: $M$ if $a$ is the label of the node $(11^n1)$, $M^\complement$ else. 
+
+The following remark ensures that the set-theoretical operation $+$ is well-behaved and in particular is the counterpart of the ordinal sum on Wadge degrees.
+\begin{remark}[\cite{dup3,dup95}]
+\label{r_sum}
+Let $L, M, L', M'$ be four non self-dual sets of conciliatory binary trees. Then
+
+\begin{itemize}
+\item  $ (L + M)^\complement \equiv_W  L+ M^\complement $,
+\item The operation $+$ preserves the Wadge ordering: \[ \text{if } L' \leq_W L \text{ and } M' \leq_W M \text{ then } L'+ M' \leq_W L+ M
+\]
+\item $d_W(L+ M)= d_W(L) + d_W(M)$.
+\end{itemize}
+\end{remark}
+\noindent As for alternative, it is easy to see that sum defines associative and commutative operations on Wadge equivalence classes. 
+
+The next operation is a generalization of $\lor$ and $+$. Let $\lambda < \omega_1$. Fix $L_\kappa \subseteq T^{\sf c}_{\Sigma \cup \{b\}}$
+for every $\kappa<\lambda$. Fix any bijection $f: \omega \to \lambda$. Thus, define $\mathrm{sup}^-_{\kappa<\lambda} L_\kappa$ as the set of trees $t
+\in  T^{\sf c}_{\Sigma \cup \{b\}}$ satisfying the following conditions for some $k$:
+\begin{itemize}
+\item $0^k$ is the first node on $0^*$ labeled with $b$,
+\item $t0^k1 \in L_{f(k)}$.
+\end{itemize}
+Intuitively, a player in charge of $\sup^-_{\kappa<\lambda} L_\kappa$ is given the choice
+between the $L_\kappa$'s. The decision is determined by the number of labels different from $b$ played on
+the leftmost branch of the tree before the first $b$. If the player keeps not
+playing $b$  forever on the leftmost branch, the tree will be rejected.  
+
+Define also
+$\sup^+ _{\kappa<\lambda} L_\kappa$ as $\sup^-_{\kappa<\lambda} L_\kappa\cup \{t :\, \forall_n\; t(1^n)\neq b\}$.
+The difference from the previous operation is that now, when the
+player does not plays $b$ on the leftmost branch, the obtained tree is
+accepted. Note that the operations are dual: 
+$$\left ( \sup_{\kappa<\lambda}^+ L_\kappa \right )^\complement = \sup^-_{\kappa<\lambda} \left ( L_\kappa^\complement
+\right )$$
+The following remark ensures that the set-theoretical $\sup$ preserves the Wadge order and is the counterpart of the ordinal supremum on Wadge degrees.
+\begin{remark}[\cite{dup3,dup95}]
+\label{r_sup}
+Let $(L_\kappa)_{\kappa<\lambda}$ and $(M_\kappa)_{\kappa<\lambda}$ be two countable familiies of non self-dual sets of conciliatory binary trees. Then
+\begin{itemize}
+\item if for all $\kappa \in \lambda$, $L_\kappa \leq_W M_\kappa$ holds, 
+then $\sup^+_{\kappa<\lambda} L_\kappa \leq_W \sup^+_{\kappa<\lambda} M_\kappa$ and $\sup^-_{\kappa<\lambda} L_\kappa \leq_W \sup^-_{\kappa<\lambda} M_\kappa$
+ hold too,
+\item$d_W(\sup^+ _{\kappa<\lambda} L_\kappa)= d_W(\sup^- _{\kappa<\lambda} L_\kappa)=\sup_{\kappa<\lambda}d_W( L_\kappa)$.
+\end{itemize}
+\end{remark}
+
+
+
+
+%%%%%%MULTIPLIC
+\vspace{0.2cm}
+\noindent {\bf Countable multiplication :} \hspace{0.1cm}
+With the help of ordinal sum and countable supremum we easily define the set-theoretic counterpart of the countable multiplication as an iterated sum. 
+Let $L \subseteq  T^{\sf c}_{\Sigma} $.  Inductively we define: 
+\begin{itemize}
+\item $L \bullet 1 = L$, 
+\item $L \bullet (\alpha + 1) = (L \bullet \alpha)+L$, 
+\item $L \bullet \lambda = \sup^+_{\kappa \in \lambda} L \bullet \kappa$ when $\lambda$  is some limit countable ordinal.
+\end{itemize}
+
+As for the previous operations, we remark that   the set-theoretical coutable multiplication preserves is the counterpart of the ordinal operation of coutable product  on Wadge degrees.
+
+\begin{remark}[\cite{dup3,dup95}]
+\label{r_mult}
+Let $L, M\subseteq T^{\sf c}_\Sigma$ be two non self dual sets. Then for every countable ordinal $\lambda$
+\begin{itemize}
+\item $(L\bullet \lambda)^\complement \equiv_W L^\complement \bullet \lambda$,
+\item if $L \leq_W M\text{ then } L\bullet \lambda \leq_W M\bullet \lambda$
+\item $d_W(L \bullet \lambda)= d_W(L) \centerdot \lambda$
+\end{itemize}
+\end{remark}
+
+
+From the player's point of view when involved in Wadge Games, being in charge of a set of the form $L\bullet \lambda$ is like a player being in charge of $L$ with the additional option to restart the run at any moment being 
+in charge of its complement $L^\complement$ instead of $L$ and start again and again replacing alternatively $L^\complement$ by $L$ and  $L$ by 
+$L^\complement$,  provided that at every such changing the player decreases the ordinal $\lambda$.  Therefore, during the run, this procedure will produce a decreasing finite sequence of ordinals, preventing her from initializing the game indefinitely\footnote{ 
+Note that the multiplication by $\omega_1$ is reached  by allowing such a process to be infinite. However we will not discuss this operation in this paper.}.
+
+
+
+%%%%%%%%%
+%CUTTING
+%%%%%%%%%
+
+\subsection{Cutting games}
+
+%\subsection{Delayed cutting games}
+We are going now to introduce another type of two-player game of perfect information. 
+
+Let $( L_i : i \in \omega )$ be a sequence of tree languages over $\Sigma$, and $p$ a prefix over $\Sigma$. 
+
+The \emph{simple} cutting game over $( L_i : i \in \omega )$ and a prefix $p$ of length $k$, denoted by $\mathcal{X}^p_k(L_i : i \in \omega )$ is played by two players, Constrainer and Alternator.
+
+At the beginning of game, Constrainer chooses $p$.
+For each $i \in \{1, \dots, k \}$, round $i$ of the game is played as follows.
+\begin{itemize}
+\item Alternator chooses a tree $t_i \in L_i$ extending the choice of Constrainer, 
+\item Constrainer chooses a prefix of the choice of Alternator.
+\end{itemize}
+If Alternator cannot move, she loses, if she manages to survive $k$ rounds, then she wins.
+
+The infinite cutting game over $( L_i : i \in \omega )$ and a prefix $p$ of length $k$, denoted by $\mathcal{X}^p_\infty(L_i : i \in \omega )$, is played just like a simple game but without the restriction to a fixed given number of round. Alternator wins iff she can always move.
+
+The $M^+$-delayed cutting game over $( L_i : i \in \omega )$, denoted by $\mathcal{X}^{M^+}_\omega(L_i : i \in \omega )$, is like a simple cutting game, except that a mini game is played to determine the prefix $p$ and the length $k$ of the match. 
+The mini game goes as follows. Firstly, Alternator chooses a tree $t \in M$. Then Constrainer chooses a prefix $p$ of $t$ and a finite ordinal $k$. Finally the two players starts to play the simple cutting game $\mathcal{X}^p_k(L_i : i \in \omega )$. 
+The $M^-$-delayed cutting game over $( L_i : i \in \omega )$ is played like a $M^+$-delayed cutting game over $( L_i : i \in \omega )$ except that at first Alternator chooses a tree $t \notin M$.
+
+When $L_{2i}=L$ and $L_{2i +1}=L^\complement$, then we simply write $\mathcal{X}^p_k(L, L^\complement), \mathcal{X}^p_\infty(L, L^\complement)$ and  $\mathcal{X}^{M^+}_\omega(L, L^\complement)$.
+
+\begin{proposition}\label{prop:omega} Let $L$ be a tree language.
+
+$[\omega]^+ \leq_W L$ iff Alternator has a winning strategy in $\mathcal{X}^{L^+}_\omega(L^\complement, L)$. 
+
+\end{proposition}
+\begin{proof}
+For the direction from left to right, we reason as follows. Let $f$ be the winning strategy for Player two in $\mathcal{G}([\omega]^+, L)$. As a first move, Alt plays the tree $t$ given by applying the strategy $f$ against Pl I playing always accepting. Now, suppose that Const plays a prefix $p$ of depth $\ell$ and $k$. Thus Alternator looks at the shadow game used to determine $t$, but at $k+1$ round, she makes Player I erasing his game and decide to play into $[k']^-$, for a $k' \geq k + \ell +1$, and appply the winning strategy $f$ in the game that continues with Player 1 playing rejecting. Assume the obtained tree is $t'$. We have that:
+\begin{itemize}
+\item $t' \notin L$ and $t'$ extends $p$,
+\end{itemize}
+thus it is an admissible move for Alt.
+Now, assume at next round Constrainer chooses a prefix $p_1$ (extending $p$, wlog) of $t'$, whose depth is $\ell_1$. Then in the shadow match, Alt change Play 1 moves in the sense that at turn $k_1 \geq k' + \ell_1$ he decrease the ordinal of one and starts to play accepting. The tree so obtained by $f$ when Pl 1 keeps playing accepting is next Alternator moves. For the same reasons as before, such a move is admissible. By continuing such a strategy, it is clear that Alternator wins.
+
+For the direction from right to left, we describe a winning strategy for Player 2 in $\mathcal{G}([\omega]^+, L)$ as follows. In the back she keep tracks of a shadow match in $\mathcal{X}^{L^+}_\omega(L, L^\complement)$ where she applies the  winning strategy for Alternator. 
+As long as Pl 1 plays accepting, Pl 2 just plays the initial choice of Alternator. Now, assume that at round $n$, Pl 2 decides to decrease his ordinal to $k$ and to play rejecting, then in the shadow match, Pl 2 makes Constrainer play a prefix of depth $n-1$ and the ordinal $k+1$, then Alt plays the tree $t_1$ obtained by applying her winning strategy. So Pl starts to play into $t_1$. By construction $t_1$ is not in $L$, thus if Pl1 continues to play rejecting, she wins. If at round $n_1> n$ Pl 2 decrease his ordinal of one and decides to start to play accepting, then in the second round of the shadow match, Pl 2 makes Constrainer choosing a prefix of depth $n_1$, and Alternator apply her winning strategy to obtain a tree $t_2$ extending the choosen prefix of $t_1$. Thus Pl 2 just start to play into $t_2$. Since this tree is in $L$, if Pl 1 keeps playing accepting, he looses. By continuing of playing with such a strategy, Pl 2 is ensured to win. 
+\end{proof}
+
+\begin{proposition}\label{prop:infinity} Let $L$ be a tree language. For every prefix $p$,
+
+$d_W([p]^{-1}L) \geq \omega_1$ iff Alternator has a winning strategy in $\mathcal{X}^p_\infty(L, L^\complement)$. 
+
+\end{proposition}
+\begin{proof}
+For the direction from left to right, it is enough to apply the fact that $d_W([p]^{-1}L) \geq \omega_1$ then Player II has a winning strategy in $\mathcal{G}(M, [p]^{-1}L)$, where $M$ is either $[\omega_1]^+$ or $[\omega_1]^-$, 
+where, from the point of view of Wadge games, a player in charge of $[\omega_1]^+$ 
+is like a player in charge of the $\emptyset$, with at every point the possibility of restarting anew and being in charge its complement, with the condition that if she restart the game infinitely often, she is rejecting.
+%
+% that Alternator has a winning strategy in $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$, where $L$ is the canonical set of Wadge degree $\omega_1$ over $\{a,b\}$ defined by the property ``all nodes on $1^\omega$ are labelled $a$, and there is a $k$ such that the word induced by $1^k0^\omega$ is in $a^k b^* a^\omega$. But 
+
+
+The other direction is proved by showing that for every countable ordinal $\kappa$, Player II has a winning strategy in $\mathcal{G}([\kappa]^+, [p]^{-1}L)$ and $\mathcal{G}([\kappa]^-, [p]^{-1}L)$.
+% induced by Alternator's winning strategy in $\mathcal{X}^p_\infty(L, L^\complement)$. 
+%{\tt TODO: say explicitly what ``induced'' here mean.}
+
+This is done by induction on countable Wadge degrees.
+Let $\kappa=1$. Then the claim is trivially proved.
+Assume now that $\kappa= \beta + 1$. We first consider the case for $+$. At first Player II applies the winning strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$. Now assume that at round $n$ Player 1 decides the erase everything and being in charge of $[\beta]^-$ (the case for $[\beta]^+$ is exactly the same). Assume that before her turn at round $n$, Player 2 has played $p'$. From round $n+1$ she just apply the winning strategy given by the induction hypothesis in $\mathcal{G}([\beta]^-, [p']^{-1}L)$. Now, let's consider the case for $-$. At first Player II applies the winning strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$ by following the strategy induced by the following shadow match in $\mathcal{X}^p_\infty(L, L^\complement)$: at the first round alternator play any tree of $L$ extending $p$, then Constrainer plays $p$, and Alternator plays a tree $t$ with prefix $p$ outisde $L$. The induced strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$ for Pl II is thence to play $t$. 
+Assume that at round $n$ Player I decides the erase everything and being in charge of $[\beta]^-$ (the case for $[\beta]^+$ is exactly the same). Assume that before her turn at round $n$, Player II has played $p'$. From round $n+1$ she just apply the winning strategy given by the induction hypothesis in $\mathcal{G}([\beta]^-, [p']^{-1}L)$.
+%{\tt TODO: finish here, clear idea by using the fact of keeping track of the strategy.}
+\end{proof}
+
