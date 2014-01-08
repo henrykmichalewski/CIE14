@@ -1,25 +1,18 @@
 \section{A characterization of regular languages  below $\omega_1$}
 
-We recall that, given a language $L$, the set $H_L$ is the set of tree types, and the set $V_L$ of context types of $L$. Both are finite when $L$ is regular. Following \cite{bp}, for a given regular language of trees $L$ we define games on types $\mathcal{X}(h_1, \dots, h_n)$ and $\mathcal{X}(h_1, \dots, h_n, \dots)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $h_i$. 
+%We recall that, given a language $L$, the set $H_L$ is the set of tree types, and the set $V_L$ of context types of $L$. Both are finite when $L$ is regular. 
+Following \cite{bp}, for a given regular language of trees $L$ and types $h_i\in H_L$ ($i=1,2,\dots$) we define games on types $\mathcal{X}(h_1, \dots, h_n)$ and $\mathcal{X}(h_1, h_2, \dots)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $h_i$, that is an element of $\alpha_L^{-1}(h_i)$. 
 % deleted, because there is seemingly no place where we play contexts. 
 % Similarly we define games on types of contexts $\mathcal{X}(v_1, \dots, v_n)$ and $\mathcal{X}(v_1, \dots, v_n, \dots)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $v_i$
-
-
-
-Thus, 
-$\mathcal{H}_L:= \{(h_1, \dots, h_n) 
-\mid 
-n \in \omega 
-$
-and Alternator wins $\mathcal{X}(h_1, \dots, h_n)\}$
-and 
-$\mathcal{V}_L:= \{(v_1, \dots, v_n) \mid n \in \omega 
-$
-and Alternator wins $\mathcal{X}(v_1, \dots, v_n)\}$.
-Sets 
-$\mathcal{H}^\infty_L$ and $\mathcal{V}^\infty_L$ are defined analogously.
-
-
+Thus we define
+\[ \mathcal{H}_L:= \{(h_1, \dots, h_n) \mid n \in \omega\ \mbox{and Alternator wins}\ \mathcal{X}(h_1, \dots, h_n)\}, \]
+\[ \mathcal{H}^\infty_L:= \{(h_1, \dots,) \mid n \in \omega\ \mbox{and Alternator wins}\ \mathcal{X}(h_1, \dots )\}.\]
+%and $\mathcal{H}^\infty_L 
+%$\mathcal{V}_L:= \{(v_1, \dots, v_n) \mid n \in \omega 
+%$
+%and Alternator wins $\mathcal{X}(v_1, \dots, v_n)\}$.
+%Sets 
+%$\mathcal{H}^\infty_L$ and $\mathcal{V}^\infty_L$ are defined analogously.
 %For a multicontext $c$, we can also define the game $\mathcal{X}^c(h_1, \dots, h_n, \dots)$
 %the same way as $\mathcal{X}(h_1, \dots, h_n, \dots)$ with the added restriction that the first tree played by alternator must extend the multicontext $c$. 
 
@@ -29,68 +22,51 @@ A type tree for $L$ is a tree over the finite alphabet $\mathcal{H}_L$. For a gi
 Let $\sigma$ be a type tree, and $t$ a tree. We say that a type tree $\sigma$ is locally consistent with a tree $t$ if $\dom(\sigma)=\dom(t)$ and for every node $w \in \dom(t)$ such that $t(w)=a$, 
 \begin{itemize}
 \item if $w$ is a leaf, then $\sigma(w)$ is the type of $a$,
-\item if $w$ has two children $m_\ell$ and $m_r$, then $\sigma(w)$ is the the obtained by applying $a$ to the pair $(\sigma(m_\ell), \sigma(m_r))$.
+\item if $w$ has two children $m_\ell$ and $m_r$, then $\sigma(w)$ is the type obtained by applying $a$ to the pair $(\sigma(m_\ell), \sigma(m_r))$.
 \end{itemize}
 
 A finite strategy tree is a tuple
-
 \[ \mathfrak{s}=(t, \sigma_1, \dots, \sigma_k) \] where
 \begin{itemize}
 \item $t$ is a tree, the support of the strategy
 \item $\sigma_t=\sigma_1$, and
 \item $\sigma_\ell$ is locally consistent with $t$, $\ell \leq k$,
-\item for each $n \in \dom(t)$, $(\sigma_1(n), \dots, \sigma_k(n)) \in \mathcal{H}_L$.
+\item for each $w \in \dom(t)$, $(\sigma_1(w), \dots, \sigma_k(w)) \in \mathcal{H}_L$.
 \end{itemize}
+An  infinite strategy tree is defined analogously.
 
-A  infinite strategy tree is defined analogously.
-
-Given a prefix $p$, we can associate a multi context $c_p$ given by adding two holes to every leaf of $p$. For a context $c$, the set $Holes(c)$ is the set of all holes of $c$. The following Lemma follows immediately by definition of a strategy tree.
-
+Given a prefix $p$, we can associate a multi context $c_p$ given by adding two holes to every leaf of $p$. For a context $c$, the set $Holes(c)$ is the set of all holes of $c$. The Lemma below follows immediately from the definition of a strategy tree.
 \begin{lemma}\label{lemma:short_strategy}
 Let $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_k)$ be a any strategy tree. Given the  game $\mathcal{X}(\sigma_1(\varepsilon), \dots, \sigma_k(\varepsilon))$ and a strategy for Constrainer given by always cutting at level $i$, Alternator wins  by playing as follows:
 \begin{itemize}
 \item at first, Alternator plays $t$, then
-\item for each hole $n$ at level $i$ of the multi context given by Constrainer's move, Alternator plugs in the tree given by her winnings strategy $\mathcal{X}(\sigma_1(n), \dots, \sigma_k(n))$.
+\item for each hole $w$ at level $i$ of the multi context given by Constrainer's move, Alternator plugs in the tree given by her winning strategy $\mathcal{X}(\sigma_1(w), \dots, \sigma_k(w))$.
 \end{itemize}
-In particular, if from a certain $j<k$ on $\sigma_\ell(n)=\sigma_{\ell+1}(n)$, $j\leq \ell < k$, then for each round $j< \ell < k$ she always plugs in the same tree of type $\sigma_j(n)$ chosen at round $j$.
-
+In particular, if from a certain $j<k$ on $\sigma_\ell(w)=\sigma_{\ell+1}(w)$, $j\leq \ell < k$, then for each round $j< \ell < k$ she always plugs in the same tree of type $\sigma_j(w)$ chosen at round $j$.
 \end{lemma}
-
-Let $\mathfrak{s}$ be a finite strategy tree. The root alternation of $\mathfrak{s}$ is the alternation of the root sequence, while the limit of alternation of $\mathfrak{s}$ is the maximal number $k$ such that infinitely many subtrees of $\mathfrak{s}$ have root alternation $k$.
+Let $\mathfrak{s}$ be a finite strategy tree. The root alternation of $\mathfrak{s}$ is the alternation of the root sequence, while the limit of alternation of $\mathfrak{s}$ is the maximal number $k$ such that infinitely many subtrees of $\mathfrak{s}$ have root alternation $k$. 
 
 We say that $L$ has bounded root alternation if the set $\mathfrak{S}_L$ of finite strategy trees has bounded root alternation. Analogously for limit alternation.
-
-The following proposition is a straightforward generalization of an analogous proposition (5.2) in \cite{bp}
-
+The following proposition is a straightforward generalization of an analogous proposition (5.2) in \cite{bp}:
 \begin{proposition}\label{prop:tree_to_types}
  For a regular language $L$ of infinite trees and any prefix $p$, the following conditions are equivalent.
  \begin{itemize}
-\item Alternator wins the game $\mathcal{X}^p_\infty(L, L^\complement)$ 
- \item  There are tree types $h, g$, such that $h\neq g$ and Alternator wins $\mathcal{X}^p_\infty(h, g)$.
+\item Alternator wins the game $\mathcal{X}^p_\infty(L, L^\complement)$, 
+ \item  There are tree types $h, g\in H_L$, such that $h\neq g$ and Alternator wins $\mathcal{X}^p_\infty(h, g)$.
  \end{itemize}
 \end{proposition}
-
 The following Lemma will turn out to be useful:
-
 \begin{lemma}[Appendix of \cite{bp}]\label{lemma:limit}
 Let $(t_n: n <\omega)$ be a sequence of trees that converges to $t^*$ and let $(\sigma_n: n \in \omega)$ be a sequence of type trees that converges to $\sigma^*$. If $\sigma_n$ is locally consistent with $t_n$ for every n, then $\sigma^*$ is locally consistent with $t^*$.
 \end{lemma}
-
 Everything now is ready to prove the main result of this note.
-
 \begin{theorem}
 Let $L$ be a regular tree language. The following conditions are equivalent:
 \begin{enumerate}
-
-
-
 %\item The following identity is not satisfied: $(u_2w_2^\omega v)^\omega u_1w_1^\infty = (u_2w_2^\omega v)^\infty$ if $(u_1, u_2) \in V_L$ and $(w_1, w_2) \in V_L$
 \item $L$ has unbounded limit alternation
 \item The strategy graph $G_L$ is recursive
 \item $d_W(L) \geq \omega_1$
-
-
-
 \end{enumerate}
 \end{theorem}
 

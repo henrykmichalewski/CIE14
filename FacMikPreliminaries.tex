@@ -27,7 +27,7 @@ ${\bf\Pi}^0_0(T^\infty_A)=\{T^\infty_A \}$.
 \end{itemize}
 
 A much finer measure of the topological complexity of tree languages is the \emph{Wadge degree} (see \cite[Chapter 21.E]{kechris}).
-If $L \subseteq T^\infty_A$ and $M\subseteq T^\infty_A$,   we say that $L$ is \emph{continuously (or Wadge)
+If $L \subseteq T^\infty_A$ and $M\subseteq T^\infty_A$, we say that $L$ is \emph{continuously (or Wadge)
 reducible} to $M$, if there exists a continuous function $f$ such that $L=
 f^{-1}(M)$. We write $L \leq_W M$ iff $L$ is continuously reducible to $M$.
 This ordering is called the {\em Wadge ordering}. If $L \leq_W M$ and $M \leq_W L$, then we write $L
@@ -41,4 +41,8 @@ Given a certain family of sets $\mathcal{C}$, we say that $M$ is $\mathcal{C}$-h
 \leq_W M$ for every $L \in \mathcal{C}$.   
 
 \subsection{Algebra}
-The Wadge hierarchy on the regular languages of infinite words is well understood thanks to a classification result by K. Wagner (\cite{wagner}). A natural algebraic interpration of Wagner's result can be found in \cite{Theorem 6.2}[pinperrin]. In the case of languages of infinite trees, the algebraic theory of i
+The Wadge hierarchy on the regular languages of infinite words is well understood thanks to a classification result by K. Wagner (\cite{wagner}). A natural algebraic interpration of Wagner's result can be found in \cite[Theorem 6.2]{pinperrin}. In the case of languages of infinite trees, the algebraic theory is not yet fully developed. As a general reference may serve papers \cite{blumensath}, \cite{bp}, \cite{bojtrees}, \cite{bojidziaszek}. For details of the approach applied in this paper refer to \cite[Section 3]{bp}. 
+
+As in \cite{bp} family of all trees $T_A$ is divided into finitely many Myhill-Nerode equivalence classes $H_L$. Similarly, there are finitely many equivalence classes $V_L$ of contexts. Starting from an automaton accepting language $L$, one can compute families $H_L$ and $V_L$. The equivalence class of a tree $t$ or a context $v$ is denoted $\alpha_L(t)$, $\alpha_L(v)$, respectively. For a given tree $t$ and contexts $v_1,v_2$ multiplication of contexts and trees $v_1t$, $v_1v_2$ naturally induces multiplication between elements of $H_L$ and $V_L$. Similarly, for a given context $v$ the operation of infinite power $vv\ldots$ induces a mapping from $V_L$ to $H_L$. 
+
+
