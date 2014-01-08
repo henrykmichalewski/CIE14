@@ -4,7 +4,7 @@
 
 \subsection{Topological Games}
 Let $L$ and $M$ be two languages. The {\em Wadge game}
-$\mathcal{W}(L, M)$ is an infinite two-player game (player I and player II) of perfect information defined as follows. During a play Player I construct a tree $t$ and Player II a tree $t'$. At the first round they plays a root, and at each successive round  both players add the right and left child to each leaves
+$\mathcal{W}(L, M)$ is an infinite two-player game between Player I and Player II. It is defined as follows. During a play Player I construct a tree $t$ and Player II a tree $t'$. At the first round they plays a root, and at each successive round  both players add the right and left child to each leaves
 of their corresponding tree. Player I plays first and Player II is allowed to
 skip her turn but not forever.  Player II wins the game iff $t \in L
 \Leftrightarrow t' \in M$.  
@@ -41,21 +41,22 @@ For each degree there are exactly three equivalence
 classes with the same degree, represented by $T$, $T^\complement$ and
 $T^\pm = \{t \bigm | t(\epsilon) = c, t.0\in T \} \cup  \{t \bigm |
 t(\epsilon) \neq c, t.0\notin T \}$ for some non self-dual set $T$ and
-$c\in A$. Clearly $T, T^\complement <_W U^\pm$ and
+$c\in A$. Clearly $T, T^\complement <_W T^\pm$ and
 $T^\pm$ is self-dual.
 
 For non self-dual sets, it is possible to determine its sign, $+$
 or $-$, which specifies precisely the $\equiv_W$-class
-(cf. \cite{dup1}). For a set $T$ whose Wadge degree has countable cofinality, the sign
-is $+$ if $T$ is Wadge equivalent to the set of trees over $A
-\cup \{c\}$, $c\notin A$, which have no $c$ on the leftmost
-branch, or the first $c$ is in the node $0^i$ and $t.0^i \in T$. The
-sign is $-$ if $T$ is equivalent to the complement of this set. 
-For instance, $\emptyset$ and complete open sets have sign -,
-while the whole space and complete closed  sets have sign $+$.
-For sets of cofinality $\omega_1$, the definition is more complicated, but
-${\bf \Sigma}^0_n$-complete sets have sign $-$, and ${\bf
-  \Pi}^0_n$-complete sets have sign $+$. All self-dual sets by
+(cf. \cite{dup1}). 
+%For a set $T$ whose Wadge degree has countable cofinality, the sign
+%is $+$ if $T$ is Wadge equivalent to the set of trees over $A
+%\cup \{c\}$, $c\notin A$, which have no $c$ on the leftmost
+%branch, or the first $c$ is in the node $0^i$ and $t.0^i \in T$. The
+%sign is $-$ if $T$ is equivalent to the complement of this set. 
+For instance, $\emptyset$ and complete open sets have sign $-$, while the whole space and complete closed  sets have sign $+$.
+%For sets of cofinality $\omega_1$, the definition is more complicated, but
+%${\bf \Sigma}^0_n$-complete sets have sign $-$, and ${\bf
+  %\Pi}^0_n$-complete sets have sign $+$. 
+  All self-dual sets by
 definition have sign $\pm$. Thus an ordinal $\alpha <\,
 {}^{\omega_1}\epsilon_0$ and a sign $\epsilon \in \{+,-,\pm\}$,
 determine a $\equiv_W$-class, denoted  $[\alpha]^\epsilon$. 
@@ -161,8 +162,8 @@ Let $L$ and $ M$ be two non self dual languages. Then
 \end{itemize}
 \end{lemma}
 
-
-
+The sign of the degree of a non self dual set Wadge equivalent 
+to $\sup^+ _{\alpha < \kappa} L_\alpha$, for some   family $(L_\alpha: \alpha < \kappa)$, is $+$, dually for the operation $\sup^-$. 
 
 From now on, for each $\alpha < \omega_1$, and sign $\epsilon \in \{+,-,\pm\}$, we use  $[\alpha]^\epsilon$ to also denote the canonical complete language of signed Wadge degree $[\alpha]^\epsilon$ whose construction is given by the previous operations.
 
@@ -184,14 +185,14 @@ The dual description holds for a player in charge of $[\omega_1]^+$.
 
 \subsection{Cutting games}
 
+\label{cuttinggames}
 %\subsection{Delayed cutting games}
 We are going now to define a family of two-player game of perfect information, called cutting games. 
 The first type of cutting game  introduced (finite and infinite simple cutting games) is essentially the kind of games defined in \cite{bp}.
 
 Let $( L_i : i \in \omega )$ be a sequence of languages over $A$, and $p$ a prefix over $A$. 
 
-The \emph{simple} cutting game over $( L_i : i \in \omega )$ and a prefix $p$ of length $k$, denoted by $\mathcal{H}^p_k(L_i : i \in \omega )$ is played by two players, Constrainer and Alternator.
-
+The \emph{simple} cutting game of length $k$ over $( L_i : i \in \omega )$ and a prefix $p$, denoted by $\mathcal{H}^p_k(L_i : i \in \omega )$ is played by two players, Constrainer and Alternator.
 At the beginning of game, Constrainer chooses $p$.
 For each $i \in \{1, \dots, k \}$, round $i$ of the game is played as follows.
 \begin{itemize}
@@ -213,9 +214,7 @@ They also remarked that the language $L$ described in Remark \ref{rem:example}, 
 In the next two propositions, by establishing a precise link between on the one hand delayed cutting games and infinite Wadge degrees, and on the other hand infinite simple cutting games and uncountable Wadge degrees, we provide the expected explanation of this fact.
 
 
-\begin{proposition}\label{prop:omega} Let $L$ be a tree language.
-
-$[\omega]^+ \leq_W L$ iff Alternator has a winning strategy in $\mathcal{H}^{L^+}_\omega(L^\complement, L)$. 
+\begin{proposition}\label{prop:omega} Let $L$ be a tree language, $[\omega]^+ \leq_W L$ iff Alternator has a winning strategy in $\mathcal{H}^{L^+}_\omega(L^\complement, L)$. 
 
 \end{proposition}
 \begin{proof}
@@ -226,32 +225,41 @@ For the direction from left to right, we reason as follows. Let $f$ be the winni
 thus the one described is an admissible move for Alternator.
 Now, assume at next round Constrainer chooses a prefix $p_1$ (without loss of generality extending $p$) of $t'$, whose depth is $\ell_1$. Then in the shadow match, Alternator modify Player I 's strategy as follows: at turn $k_1 \geq k' + \ell_1$ he decrease the ordinal and starts to play accepting. The obtained tree by applying the winning strategy $f$ to the play when  Player  I keeps playing accepting is next Alternator 's moves. For the same reasons as before, such a move is admissible. By continuing such a strategy, it is clear that Alternator wins.
 
-For the direction from right to left, we describe a winning strategy for Player II in $\mathcal{G}([\omega]^+, L)$. In the back she keeps track of a shadow match in $\mathcal{H}^{L^+}_\omega(L, L^\complement)$ where she applies the  winning strategy for Alternator. 
+\begin{figure}
+\label{fig1}
+\begin{center}
+\includegraphics[height=2in]{simulation1}
+\caption{The flow of information between games $\mathcal{H}^{L^+}_\omega(L, L^\complement)$ and $\mathcal{G}([\omega]^+, L)$}
+\end{center}
+\end{figure}
+
+
+For the direction from right to left, we describe a winning strategy for Player II in $\mathcal{G}([\omega]^+, L)$, see Figure \ref{fig1}. In the back she keeps track of a shadow match in $\mathcal{H}^{L^+}_\omega(L, L^\complement)$ where she applies the  winning strategy for Alternator. 
 As long as Player I plays accepting, Player II just plays the initial choice of Alternator. Now, assume that at round $n$, Player II decides to decrease his ordinal to $k$ and to play rejecting. Then, in the shadow match, Player II makes Constrainer play a prefix of depth $n-1$ and the ordinal $k+1$. She then looks at Alternator winning move. Assume it consist in playing the tree $t_1$. Player II starts thence to play into $t_1$. By construction $t_1$ is not in $L$, meaning that if Player I continues to play rejecting, she wins. Assume that at round $n_1> n$ Player I decrease his ordinal of one and decides to start to play accepting, then in the second round of the shadow match, Player II forces Constrainer to choose a prefix of depth $n_1$, and Alternator to apply her winning strategy to obtain a tree $t_2$ extending the chosen prefix of $t_1$. Player II therefore just start to play into $t_2$. Since this tree is in $L$, as before if Player I keeps playing accepting, he looses. By continuing of applying such a strategy, Player II is ensured to win. 
 \end{proof}
 
 
 \begin{proposition}\label{prop:infinity} Let $L$ be a tree language. For every prefix $p$,
-
 $d_W([p]^{-1}L) \geq \omega_1$ iff Alternator has a winning strategy in $\mathcal{H}^p_\infty(L, L^\complement)$. 
 
 \end{proposition}
 \begin{proof}
-For the direction from left to right, it is enough to apply the fact that $d_W([p]^{-1}L) \geq \omega_1$ then Player II has a winning strategy in $\mathcal{G}(M, [p]^{-1}L)$, where $M$ is either $[\omega_1]^+$ or $[\omega_1]^-$. 
+For the direction from left to right, it is enough to apply the fact that %$d_W([p]^{-1}L) \geq \omega_1$ then 
+Player II has a winning strategy in $\mathcal{G}(M, [p]^{-1}L)$, where $M$ is either $[\omega_1]^+$ or $[\omega_1]^-$. 
 %where, from the point of view of Wadge games, a player in charge of $[\omega_1]^+$ 
 %is like a player in charge of the $\emptyset$, with at every point the possibility of restarting anew and being in charge its complement (with the condition that if she restart the game infinitely often, she is rejecting.
 %
 % that Alternator has a winning strategy in $\mathcal{H}^\varepsilon_\infty(L, L^\complement)$, where $L$ is the canonical set of Wadge degree $\omega_1$ over $\{a,b\}$ defined by the property ``all nodes on $1^\omega$ are labelled $a$, and there is a $k$ such that the word induced by $1^k0^\omega$ is in $a^k b^* a^\omega$. But 
-
-
 The other direction is verified by showing that for every countable ordinal $\kappa$, Player II has a winning strategy in $\mathcal{G}([\kappa]^+, [p]^{-1}L)$ and $\mathcal{G}([\kappa]^-, [p]^{-1}L)$.
 % induced by Alternator's winning strategy in $\mathcal{H}^p_\infty(L, L^\complement)$. 
 %{\tt TODO: say explicitly what ``induced'' here mean.}
 This is done by induction. % on countable Wadge degrees.
 If $\kappa=1$, then the claim is trivially proved.
-Assume now that $\kappa= \beta + 1$. We first consider the case for $+$. At first Player II applies the winning strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$. Now assume that at round $n$ Player I decides the erase everything and being in charge of $[\beta]^-$ (the case for $[\beta]^+$ is exactly the same). Assume that before her turn at round $n$, Player II has played $p'$. From round $n+1$ she just apply the winning strategy given by the induction hypothesis in $\mathcal{G}([\beta]^-, [p']^{-1}L)$. Now, let's consider the case for $-$. At first Player II applies the winning strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$ by following the strategy induced by the following shadow match in $\mathcal{H}^p_\infty(L, L^\complement)$: at the first round alternator play any tree of $L$ extending $p$, then Constrainer plays $p$, and Alternator plays a tree $t$ with prefix $p$ outisde $L$. The induced strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$ for Player II is thence to play $t$. 
-Assume that at round $n$ Player I decides the erase everything and being in charge of $[\beta]^-$ (the case for $[\beta]^+$ is exactly the same). Assume that before her turn at round $n$, Player II has played $p'$. From round $n+1$ she just apply the winning strategy given by the induction hypothesis in $\mathcal{G}([\beta]^-, [p']^{-1}L)$.
-%{\tt TODO: finish here, clear idea by using the fact of keeping track of the strategy.}
+Assume now that $\kappa= \beta + 1$. We only consider the case for $+$, the case for $-$ being immediate  by considering the winning strategy for Alternator in $\mathcal{H}^{p'}_\infty(L^\complement, L)$, for some prefix $p'$ of the first winning move for Alternator in $\mathcal{H}^p_\infty(L, L^\complement)$. At first Player II applies the induced winning strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$. Now assume that at round $n$ Player I decides the erase everything and being in charge of $[\beta]^-$ (the case for $[\beta]^+$ is exactly the same). Assume that before her turn at round $n$, Player II has played $p'$. From round $n+1$ she just apply the winning strategy given by the induction hypothesis in $\mathcal{G}([\beta]^-, [p']^{-1}L)$. 
+%Now, let's consider the case for $-$. At first Player II applies the winning strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$ by following the strategy induced by the following shadow match in $\mathcal{H}^p_\infty(L, L^\complement)$: at the first round alternator play any tree of $L$ extending $p$, then Constrainer plays $p$, and Alternator plays a tree $t$ with prefix $p$ outisde $L$. The induced strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$ for Player II is thence to play $t$. 
+%Assume that at round $n$ Player I decides the erase everything and being in charge of $[\beta]^-$ (the case for $[\beta]^+$ is exactly the same). Assume that before her turn at round $n$, Player II has played $p'$. From round $n+1$ she just apply the winning strategy given by the induction hypothesis in $\mathcal{G}([\beta]^-, [p']^{-1}L)$.
+%%{\tt TODO: finish here, clear idea by using the fact of keeping track of the strategy.}
+We now verify the limit case $\kappa= \beta.\omega$. As before, we only consider the case for $+$. Player II applies the induced winning strategy in $\mathcal{G}([1]^+, [p]^{-1}L)$. Assume that art round $n$ Player I decides to move everything and being in charge of $[\lambda]^\varepsilon$, for some $\lambda < \kappa$. Then from round $n+1$ Player II just apply the winning strategy given by the induction hypothesis in $\mathcal{G}([\lambda]^\varepsilon, [p']^{-1}L)$, where $p'$ is her position after round $n$.
 \end{proof}
 
 

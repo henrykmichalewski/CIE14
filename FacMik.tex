@@ -6,6 +6,7 @@
 
 \documentclass{llncs}
 
+\usepackage[utf8]{inputenc}
 \usepackage{times}
 %\usepackage{amsthm}
 \usepackage{amsmath}
@@ -19,7 +20,7 @@
 \usepackage{makeidx} 
 
 
-\usepackage[applemac]{inputenc}
+%\usepackage[applemac]{inputenc}
 
 
 %------------------------------- New theorems
@@ -45,6 +46,7 @@
 \newcommand {\mybox}{\textrm{{\scriptsize $\,\Box\,$}}}
 \newcommand{\ignore}[1]{}
 \newcommand{\dotcup}{\ensuremath{\mathaccent\cdot\cup}}
+\newcommand {\A}{{\mathcal A}}
 
 \begin{document}
 
@@ -93,7 +95,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{FacMikConclusion.tex}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{FacMikBibliography.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{FacMikAppendix.tex}
 
 \end{document}

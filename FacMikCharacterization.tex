@@ -1,88 +1,43 @@
+% !TEX root = FacMik.tex
+
 \section{A characterization of regular languages  below $\omega_1$}
-
+\subsection{Games on types and strategy trees}
 %We recall that, given a language $L$, the set $H_L$ is the set of tree types, and the set $V_L$ of context types of $L$. Both are finite when $L$ is regular. 
-Following \cite{bp}, for a given regular language of trees $L$ and types $h_i\in H_L$ ($i=1,2,\dots$) we define games on types $\mathcal{X}(h_1, \dots, h_n)$ and $\mathcal{X}(h_1, h_2, \dots)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $h_i$, that is an element of $\alpha_L^{-1}(h_i)$. 
-% deleted, because there is seemingly no place where we play contexts. 
-% Similarly we define games on types of contexts $\mathcal{X}(v_1, \dots, v_n)$ and $\mathcal{X}(v_1, \dots, v_n, \dots)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $v_i$
-Thus we define
-\[ \mathcal{H}_L:= \{(h_1, \dots, h_n) \mid n \in \omega\ \mbox{and Alternator wins}\ \mathcal{X}(h_1, \dots, h_n)\}, \]
-\[ \mathcal{H}^\infty_L:= \{(h_1, \dots,) \mid n \in \omega\ \mbox{and Alternator wins}\ \mathcal{X}(h_1, \dots )\}.\]
-%and $\mathcal{H}^\infty_L 
-%$\mathcal{V}_L:= \{(v_1, \dots, v_n) \mid n \in \omega 
-%$
-%and Alternator wins $\mathcal{X}(v_1, \dots, v_n)\}$.
-%Sets 
-%$\mathcal{H}^\infty_L$ and $\mathcal{V}^\infty_L$ are defined analogously.
-%For a multicontext $c$, we can also define the game $\mathcal{X}^c(h_1, \dots, h_n, \dots)$
-%the same way as $\mathcal{X}(h_1, \dots, h_n, \dots)$ with the added restriction that the first tree played by alternator must extend the multicontext $c$. 
+Following \cite{bp}, for a given regular language of trees $L$, a prefix $p$ and a sequence of types $(h_i\in H_L : i <\omega)$, we define games on types $\mathcal{H}^p_k(h_i : i < \omega)$ and $\mathcal{H}^p_\infty(h_i : i < \omega)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $h_i$, that is an element of $\alpha_L^{-1}(h_i)$. Instead of $\mathcal{H}^\varepsilon_k(h_i : i < \omega)$ often we just write $\mathcal{H}(h_1, \dots, h_k)$.
 
 
-A type tree for $L$ is a tree over the finite alphabet $\mathcal{H}_L$. For a given tree $t$, there is a type tree $\sigma_t$ induced by $t$ such that for every node $w \in \dom(\sigma_t)$, $\sigma_t(w)$ is the type of the tree $t.w$.
-
-Let $\sigma$ be a type tree, and $t$ a tree. We say that a type tree $\sigma$ is locally consistent with a tree $t$ if $\dom(\sigma)=\dom(t)$ and for every node $w \in \dom(t)$ such that $t(w)=a$, 
+A type tree for $L$ is a tree over the finite alphabet $H_L$. For a given tree $t$, there is a type tree $\sigma_t$ induced by $t$ such that for every node $w \in \dom(\sigma_t)$, $\sigma_t(w)$ is the type of the tree $t.w$.
+Let $\sigma$ be a type tree, and $t$ a tree. We say that a type tree $\sigma$ is \emph{locally consistent} with a tree $t$ if $\dom(\sigma)=\dom(t)$ and for every node $w \in \dom(t)$ such that $t(w)=a$, 
 \begin{itemize}
 \item if $w$ is a leaf, then $\sigma(w)$ is the type of $a$,
 \item if $w$ has two children $m_\ell$ and $m_r$, then $\sigma(w)$ is the type obtained by applying $a$ to the pair $(\sigma(m_\ell), \sigma(m_r))$.
 \end{itemize}
 
-A finite strategy tree is a tuple
+\begin{definition} A finite strategy tree is a tuple
 \[ \mathfrak{s}=(t, \sigma_1, \dots, \sigma_k) \] where
 \begin{itemize}
 \item $t$ is a tree, the support of the strategy
 \item $\sigma_t=\sigma_1$, and
-\item $\sigma_\ell$ is locally consistent with $t$, $\ell \leq k$,
-\item for each $w \in \dom(t)$, $(\sigma_1(w), \dots, \sigma_k(w)) \in \mathcal{H}_L$.
+\item $\sigma_\ell$ is locally consistent with $t$, for each $\ell \leq k$,
+\item for each $w \in \dom(t)$, Alternator has a winning strategy in $\mathcal{H}(\sigma_1(w), \dots, \sigma_k(w))$.
 \end{itemize}
 An  infinite strategy tree is defined analogously.
+\end{definition}
+The root sequence of a strategy tree $\mathfrak{s}=(t, (\sigma_i : i < \alpha))$ is the sequence of types $(\sigma_i(\varepsilon): i < \alpha)$.
 
-Given a prefix $p$, we can associate a multi context $c_p$ given by adding two holes to every leaf of $p$. For a context $c$, the set $Holes(c)$ is the set of all holes of $c$. The Lemma below follows immediately from the definition of a strategy tree.
-\begin{lemma}\label{lemma:short_strategy}
-Let $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_k)$ be a any strategy tree. Given the  game $\mathcal{X}(\sigma_1(\varepsilon), \dots, \sigma_k(\varepsilon))$ and a strategy for Constrainer given by always cutting at level $i$, Alternator wins  by playing as follows:
-\begin{itemize}
-\item at first, Alternator plays $t$, then
-\item for each hole $w$ at level $i$ of the multi context given by Constrainer's move, Alternator plugs in the tree given by her winning strategy $\mathcal{X}(\sigma_1(w), \dots, \sigma_k(w))$.
-\end{itemize}
-In particular, if from a certain $j<k$ on $\sigma_\ell(w)=\sigma_{\ell+1}(w)$, $j\leq \ell < k$, then for each round $j< \ell < k$ she always plugs in the same tree of type $\sigma_j(w)$ chosen at round $j$.
-\end{lemma}
-Let $\mathfrak{s}$ be a finite strategy tree. The root alternation of $\mathfrak{s}$ is the alternation of the root sequence, while the limit of alternation of $\mathfrak{s}$ is the maximal number $k$ such that infinitely many subtrees of $\mathfrak{s}$ have root alternation $k$. 
-
-We say that $L$ has bounded root alternation if the set $\mathfrak{S}_L$ of finite strategy trees has bounded root alternation. Analogously for limit alternation.
-The following proposition is a straightforward generalization of an analogous proposition (5.2) in \cite{bp}:
-\begin{proposition}\label{prop:tree_to_types}
- For a regular language $L$ of infinite trees and any prefix $p$, the following conditions are equivalent.
- \begin{itemize}
-\item Alternator wins the game $\mathcal{X}^p_\infty(L, L^\complement)$, 
- \item  There are tree types $h, g\in H_L$, such that $h\neq g$ and Alternator wins $\mathcal{X}^p_\infty(h, g)$.
- \end{itemize}
-\end{proposition}
-The following Lemma will turn out to be useful:
-\begin{lemma}[Appendix of \cite{bp}]\label{lemma:limit}
-Let $(t_n: n <\omega)$ be a sequence of trees that converges to $t^*$ and let $(\sigma_n: n \in \omega)$ be a sequence of type trees that converges to $\sigma^*$. If $\sigma_n$ is locally consistent with $t_n$ for every n, then $\sigma^*$ is locally consistent with $t^*$.
-\end{lemma}
-Everything now is ready to prove the main result of this note.
-\begin{theorem}
-Let $L$ be a regular tree language. The following conditions are equivalent:
-\begin{enumerate}
-%\item The following identity is not satisfied: $(u_2w_2^\omega v)^\omega u_1w_1^\infty = (u_2w_2^\omega v)^\infty$ if $(u_1, u_2) \in V_L$ and $(w_1, w_2) \in V_L$
-\item $L$ has unbounded limit alternation
-\item The strategy graph $G_L$ is recursive
-\item $d_W(L) \geq \omega_1$
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-The implication $(1) \Rightarrow (2)$ is proved in \cite{bp}.  
-We show that $(2) \Rightarrow (3)$. Assume the strategy graph is recursive. This means that there exists a strongly connected component that contains two nodes $(v, h)$ and $(v', h')$ with $h \neq h'$. 
-Now, if there exists a path between $(v, h)$ and $(v', h')$, there is also an edge between $(v, h)$ and $(v', h')$. 
-Moreover, for every sequence $((v_i,h_i) : i \in \alpha)$, for $\alpha \leq \omega$, if there is an edge from $(v_i, h_i)$ to $(v_{i+1}, h_{i+1})$, this means that Alternator has a winning strategy in $\mathcal{X}(h_i: i \in \alpha)$. So, take $(v_i, h_i)= (v,h)$ for $i$ even, and $(v_i, h_i)= (v',h')$ for $i$ odd. We have that Alternator has a winning strategy in $\mathcal{X}^\varepsilon_\infty(h, h')$. By Proposition \ref{prop:tree_to_types}
-Alternator has a winning strategy in  $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$.
-
-
-Now we turn to the implication  $(3) \Rightarrow (1)$. 
-By proposition \ref{prop:infinity} it is enough to verify that 
- if Alternator has a winning strategy in $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$ then $L$ has unbounded limit alternation.
+Let $\mathfrak{s}$ be a finite strategy tree. The \emph{root alternation} of $\mathfrak{s}$ is the alternation of the root sequence, while the limit of alternation of $\mathfrak{s}$ is the maximal number $k$ such that infinitely many subtrees of $\mathfrak{s}$ have root alternation $k$. We say that a set  $\mathfrak{S}$ of finite strategy trees has \emph{bounded root alternation} if there is a  $k$ such that the root alternation of each $\mathfrak{s} \in \mathfrak{S}$ is at most $k$, unbounded otherwise. Analogously for limit alternation.
+The next Proposition is the most important technical point of \cite{bp}:
+\begin{proposition}[\cite{bp}]\label{prop:locality}
+ For a regular language $L$ of infinite trees, if $\mathfrak{S}$ is a set of locally optimal finite strategy trees with both root and limit unbounded alternation, then the strategy graph $G_L$ is recursive.
+ \end{proposition}
  
-Assume Alternator has a winning strategy $f$ in  $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$. We are going to verify that there is a infinite strategy tree $\mathfrak{s}^\infty$ with infinite root alternation. The strategy tree is constructed as follows. First of all, $f$ can be represented as a tree $t_f$: 
+The next proposition will be important in the rest of the paper. It establishes a link between infinite cutting games alternating between a language and its complement and infinite cutting games with infinite root alternation.
+
+\begin{proposition}\label{prop:types}
+ Assume Alternator has a winning strategy in  $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$. Then there is a infinite strategy tree $\mathfrak{s}^\infty$ with infinite root alternation. 
+\end{proposition} 
+ \begin{proof}
+ Assume Alternator has a winning strategy $f$ in  $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$. The infinite strategy tree $\mathfrak{s}^\infty$ is constructed as follows. First of all, $f$ can be represented as a tree $t_f$: 
 \begin{itemize}
 \item the root is labelled by $\varepsilon$, and its unique child is labelled by Alternator's move given by $f(\varepsilon)$,
 \item if a node $n$ at odd depth (and thus representing Alternator's move) is labelled by a tree $t_n$, then for every prefix $p$ of $t_n$, there is a unique child $n$ labelled by $p$,
@@ -103,7 +58,100 @@ there is a sequence of strategy trees $\mathfrak{S}_n=(\mathfrak{s}^n_i: i < \om
 \end{claim}
 Indeed, given the claim above, from point 1 we have that
 for each node $n$ labelled by a prefix $p$, and each $k < \omega$, $\mathfrak{s}^n_k$ has root alternation $k$ and defines a winning strategy for Alternator in $\mathcal{X}^p_k(L, L^\complement)$ if $n$ is at depth $2i$ with $i$ even, in $\mathcal{X}^p_k(L^\complement, L)$ else.
-From point 2, it is thus enough to take $\mathfrak{s}^\infty$ has the limit of the sequence $(\mathfrak{s}^\varepsilon_k: k < \omega)$, and $\mathfrak{S}=\bigcup_{k \in \omega} \mathfrak{s}^\varepsilon_k$. 
+From point 2, it is thus enough to take $\mathfrak{s}^\infty$ has the limit of the sequence $(\mathfrak{s}^\varepsilon_k: k < \omega)$. 
+
+The claim  is proved by verifying by induction that the sequence $(\mathfrak{s}^n_i: i < k)$ can be extended to a sequence $(\mathfrak{s}^n_i: i < k+1)$ satisfying properties 1 and 2. 
+In order to do so, we reason as follows. First of all, given a sequence of types $(\sigma_i : i \in \omega)$, by compactness there is a converging subsequent whose limit is  $\sigma^*$. We assume such a subsequence given: every time we are going to choose the limit of a converging  subsequence of the sequence $(\sigma_i : i \in \omega)$, we are going to take $\sigma^*$.
+
+Now, for the initial step, it is enough to take for each node $n$ and prefix label $p$, $\mathfrak{s}^n_1=(t, \sigma_1)$, where $t$ is given by applying $f$ to the considered position, and $\sigma_1$ is the unique tree type induced by $t$. 
+
+We now describe the general construction for $k>1$. Fix any node $n$ with label a prefix $p(n)$. Assume the answer given by $f$ is $t$. For every prefix $p$ of $t$, we have a strategy tree $\mathfrak{s}^m_{k-1}=(t_p, \sigma_{p2}, \dots, \sigma_{pk})$, where $m$ is the node corresponding to $p$ in $f$. 
+By compactness, there is an infinite subsequence of prefixes $(p_i: i < \omega)$ whose limit is $t$ and such that all of the sequences
+$(t_{p_i}: i <\omega ), (\sigma_{p_i2}: i <\omega ), \dots,  (\sigma_{p_ik}: i <\omega )$ are convergent. Let the limits of these sequences be $t, \sigma^*_2, \dots, \sigma^*_k$.
+For each $p$, the type trees $(\sigma_{p2}, \dots, \sigma_{pk})$
+are locally consistent with $t_p$. Now, given a sequence of trees $(t_n: n <\omega)$  that converges to $t^*$ and a sequence of type trees $(\sigma_n: n \in \omega)$  that converges to $\sigma^*$, if $\sigma_n$ is locally consistent with $t_n$ for every n, then $\sigma^*$ is locally consistent with $t^*$.
+%Therefore, by Lemma \ref{lemma:limit} 
+From this fact, it follows that the limits $\sigma^*_2, \dots, \sigma^*_k$ are locally consistent with $t$. Finally, define $\sigma^*_1$ to be the unique type tree induced by  $t$ (globally consistent with it). We have just proved that
+$(t, \sigma^*_1, \dots, \sigma^*_k)$
+is a strategy tree. Because root values are preserved under limits, the root value
+of this strategy tree is of the desired kind. By induction hypothesis, such a construction has the property that $\mathfrak{s}^m_{k+1}$ extends $\mathfrak{s}^m_{k}$. This concludes the proof of the claim.
+ \end{proof}
+ 
+ Thanks to the previous proposition, we can generalize to infinite games an analogous proposition in \cite{bp} but for finite cutting games:
+\begin{proposition}\label{prop:tree_to_types}
+ For a regular language $L$ of infinite trees and any prefix $p$, the following conditions are equivalent.
+ \begin{enumerate}
+\item Alternator wins the game $\mathcal{X}^p_\infty(L, L^\complement)$, 
+ \item  There are tree types $h, g\in H_L$, such that $h\neq g$ and Alternator wins $\mathcal{X}^p_\infty(h, g)$.
+ \end{enumerate}
+\end{proposition}
+\begin{proof}
+The direction from (1) to (2) is an immediate corollary of Proposition \ref{prop:types}.
+For the direction from (2) to (1) we reason as follows. Since $g$ and $h$ are different elements of the syntactic algebra, it follows that there must be some multi-context $c$ such that the tree type $c[g]$ is contained in $L$, while the tree type $c[h]$ is disjoint with $L$. 
+This means that Alternator has a winning strategy in the game $\mathcal{X}^p_\infty(L, L^\complement)$.
+\end{proof}
+
+
+A (finite or infinite) strategy tree $\mathfrak{s}=(t, \sigma_1, \dots)$ is \emph{locally optimal} if for every strategy tree $\mathfrak{s}'=(t, \sigma'_1, \dots)$ with same root sequence, and every $i>1$, the depth at which $\sigma_i$ and $\sigma_{i+1}$ first differ is greater or equal than the depth at which $\sigma_i$ and $\sigma'_{i+1}$ first differs.
+
+
+
+
+
+The following Lemma, proved in \cite{bp} for finite strategy trees but whose proof extends straightforward to infinite strategy trees too, will turn out to be useful.%\footnote{This Lemma is . CHECK}
+
+\begin{lemma}\label{lemma:locallyoptimal}
+For every finite or infinite strategy tree, there is a locally optimal strategy tree with same root sequence.
+\end{lemma}
+\begin{proof} Let $\mathfrak{s}=(t, (\sigma_i : i < \alpha))$ be a strategy tree. We construct the locally optimal strategy tree $\mathfrak{s}=(t, (\sigma'_i : i < \alpha))$ by induction as follows. We put first $\sigma'_1=\sigma_1$. Then, consider the set $\mathfrak{S}_2$ of all strategy trees (finite or infinite) that are locally consistent with $t$ and which have the same root value as $\sigma_2$. This set is a closed set, and therefore is compact. It follows that some element of this set minimizes the distance with respect to $\sigma_2$. Such element will be the new $\sigma'_2$. We proceed likewise for the remaining coordinates $j$, with $2 < j < \alpha$.
+\end{proof}
+
+ The next Lemma  follows immediately from the definition of a strategy tree.
+\begin{lemma}\label{lemma:short_strategy}
+Let $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_k)$ be a strategy tree. Given the  game $\mathcal{X}(\sigma_1(\varepsilon), \dots, \sigma_k(\varepsilon))$ and a strategy for Constrainer given by always cutting at level $i$, Alternator wins  by playing as follows:
+\begin{itemize}
+\item at first, Alternator plays $t$, then
+\item for each port $w$ at level $i$ of the multi context given by Constrainer's move, Alternator plugs in the tree given by her winning strategy $\mathcal{X}(\sigma_1(w), \dots, \sigma_k(w))$.
+\end{itemize}
+In particular, if from a certain $j<k$ on $\sigma_\ell(w)=\sigma_{\ell+1}(w)$, $j\leq \ell < k$, then for each round $j< \ell < k$ she always plugs in the same tree of type $\sigma_j(w)$ chosen at round $j$.
+\end{lemma}
+
+
+
+
+
+%The following Lemma will turn out to be useful:
+%\begin{lemma}%[Appendix of \cite{bp}]
+%\label{lemma:limit}
+%Let $(t_n: n <\omega)$ be a sequence of trees that converges to $t^*$ and let $(\sigma_n: n \in \omega)$ be a sequence of type trees that converges to $\sigma^*$. If $\sigma_n$ is locally consistent with $t_n$ for every n, then $\sigma^*$ is locally consistent with $t^*$.
+%\end{lemma}
+
+\subsection{The main result}
+Everything now is ready to prove the main result of this paper.
+\begin{theorem}\label{theorem:main}
+Let $L$ be a regular tree language. The following conditions are equivalent:
+\begin{enumerate}
+%\item The following identity is not satisfied: $(u_2w_2^\omega v)^\omega u_1w_1^\infty = (u_2w_2^\omega v)^\infty$ if $(u_1, u_2) \in V_L$ and $(w_1, w_2) \in V_L$
+%\item $L$ has unbounded limit alternation
+\item The strategy graph $G_L$ is recursive
+\item $d_W(L) \geq \omega_1$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+%The implication $(1) \Rightarrow (2)$ is proved in \cite{bp}.  
+We start by showing that $(1) \Rightarrow (2)$. Assume the strategy graph is recursive. This means that there exists a strongly connected component that contains two nodes $(v, h)$ and $(v', h')$ with $h \neq h'$. 
+Now, if there exists a path between $(v, h)$ and $(v', h')$, there is also an edge between $(v, h)$ and $(v', h')$. 
+Moreover, for every sequence $((v_i,h_i) : i \in \alpha)$, for $\alpha \leq \omega$, if there is an edge from $(v_i, h_i)$ to $(v_{i+1}, h_{i+1})$, this means that Alternator has a winning strategy in $\mathcal{X}(h_i: i \in \alpha)$. So, take $(v_i, h_i)= (v,h)$ for $i$ even, and $(v_i, h_i)= (v',h')$ for $i$ odd. We have that Alternator has a winning strategy in $\mathcal{X}^\varepsilon_\infty(h, h')$. By Proposition \ref{prop:tree_to_types}
+Alternator has a winning strategy in  $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$.
+
+
+Now we turn to the implication  $(2) \Rightarrow (1)$. 
+By propositions \ref{prop:infinity}  and \ref{prop:locality}, it is enough to verify that 
+ if Alternator has a winning strategy in $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$ then there is a set of locally optimal finite strategy trees $\mathfrak{S}$ with both root and limit unbounded alternation. 
+ 
+Assume Alternator has a winning strategy $f$ in  $\mathcal{X}^\varepsilon_\infty(L, L^\complement)$. From Proposition \ref{prop:types} there is a infinite strategy tree $\mathfrak{s}^\infty$ with infinite root alternation. 
+ By Lemma \ref{lemma:locallyoptimal} we can assume that $\mathfrak{s}^\infty$ is actually locally optimal. Let us define $\mathfrak{S}=\bigcup_{k \in \omega} \mathfrak{s}^\varepsilon_k$. Note that each element of $\mathfrak{S}$ is locally optimal.
 Now, assume limit alternation of $\mathfrak{S}$ is bounded.
 This means that there is a strategy tree $\mathfrak{s} \in \mathfrak{S}$, and there are $k, k', i, \ell, $ with $k < k'$ such that
  there is a set $\{n_1, \dots, n_\ell\} \subset \dom(t)|_i$, where $\dom(t)|_i$ denotes the set of nodes of $t$ of depth at most $i$, and
@@ -113,23 +161,4 @@ This means that there is a strategy tree $\mathfrak{s} \in \mathfrak{S}$, and th
 \item $\sigma_k(n)= \sigma_{k'}(n)$, for every $n \in \dom(t)|_i \setminus \{n_1, \dots, n_\ell\}$.
 \end{itemize}
 Assume $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_j)$, and let us consider the game $\mathcal{X}( \sigma_1(\varepsilon), \dots, \sigma_j(\varepsilon))$ where at first Alternator plays $t$ and then Constrainer uses the strategy given by cutting always at level $i+1$. By Lemma \ref{lemma:short_strategy}, the trees played at round $k$ and $k'$ using her winning strategy are the same, say $t'$. But by locally consistency there is a node $n$ such that the subtree $t'.n$ of $t'$ with root in $n$ has both type $\sigma_k(n)$ and $\sigma_{k'}(n)$, with $\sigma_k(n) \neq \sigma_{k'}(n)$. Contradiction.
-
-
-
-We prove the claim \ref{claim:strategy} by verifying by induction that the sequence $(\mathfrak{s}^n_i: i < k)$ can be extended to a sequence $(\mathfrak{s}^n_i: i < k+1)$ satisfying the properties 1 and 2 of the claim. 
-
-
-
-In order to do so, we reason as follows. First of all, given a sequence of types $(\sigma_i : i \in \omega)$, by compactness there is a converging subsequent whose limit is  $\sigma^*$. We assume such a subsequence given: every time we are going to choose the limit of a converging  subsequence of the sequence $(\sigma_i : i \in \omega)$, we are going to take $\sigma^*$.
-
-Now, for the initial step, it is enough to take for each node $n$ and prefix label $p$, $\mathfrak{s}^n_1=(t, \sigma_1)$, where $t$ is given by applying $f$ to the considered position, and $\sigma_1$ is the unique tree type induced by $t$. 
-
-We now describe the general construction for $k>1$. Fix any node $n$ with label a prefix $p(n)$. Assume the answer given by $f$ is $t$. For every prefix $p$ of $t$, we have a strategy tree $\mathfrak{s}^m_{k-1}=(t_p, \sigma_{p2}, \dots, \sigma_{pk})$, where $m$ is the node corresponding to $p$ in $f$. 
-By compactness, there is an infinite subsequence of prefixes $(p_i: i < \omega)$ whose limit is $t$ and such that all of the sequences
-$(t_{p_i}: i <\omega ), (\sigma_{p_i2}: i <\omega ), \dots,  (\sigma_{p_ik}: i <\omega )$ are convergent. Let the limits of these sequences be $t, \sigma^*_2, \dots, \sigma^*_k$.
-For each $p$, the type trees $(\sigma_{p2}, \dots, \sigma_{pk})$
-are locally consistent with $t_p$. Therefore, by Lemma \ref{lemma:limit} it follows that the limits $\sigma^*_2, \dots, \sigma^*_k$ are locally consistent with $t$. Finally, define $\sigma^*_1$ to be the unique type tree induced by  $t$ (globally consistent with it). We have just proved that
-$(t, \sigma^*_1, \dots, \sigma^*_k)$
-is a strategy tree. Because root values are preserved under limits, the root value
-of this strategy tree is of the desired kind. By induction hypothesis, such a construction has the property that $\mathfrak{s}^m_{k+1}$ extends $\mathfrak{s}^m_{k}$. This concludes the proof of the claim.
   \end{proof}
