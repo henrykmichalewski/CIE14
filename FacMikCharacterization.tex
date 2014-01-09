@@ -1,6 +1,6 @@
 % !TEX root = FacMik.tex
 
-\section{A characterization of regular languages  below $\omega_1$}
+\section{A characterization of regular languages of Wadge degree bigger or equal $\omega_1$}
 \subsection{Games on types and strategy trees}
 %We recall that, given a language $L$, the set $H_L$ is the set of tree types, and the set $V_L$ of context types of $L$. Both are finite when $L$ is regular. 
 Following \cite{bp}, for a given regular language of trees $L$, a prefix $p$ and a sequence of types $(h_i\in H_L : i <\omega)$, we define games on types $\mathcal{H}^p_k(h_i : i < \omega)$ and $\mathcal{H}^p_\infty(h_i : i < \omega)$. The Constrainer plays as before and the task of the Alternator is to play in the $i$--th round a tree of type $h_i$, that is an element of $\alpha_L^{-1}(h_i)$. Instead of $\mathcal{H}^\varepsilon_k(h_i : i < \omega)$ often we just write $\mathcal{H}(h_1, \dots, h_k)$.
@@ -90,14 +90,7 @@ The direction from (1) to (2) is an immediate corollary of Proposition \ref{prop
 For the direction from (2) to (1) we reason as follows. Since $g$ and $h$ are different elements of the syntactic algebra, it follows that there must be some multi-context $c$ such that the tree type $c[g]$ is contained in $L$, while the tree type $c[h]$ is disjoint with $L$. 
 This means that Alternator has a winning strategy in the game $\mathcal{X}^p_\infty(L, L^\complement)$.
 \end{proof}
-
-
-A (finite or infinite) strategy tree $\mathfrak{s}=(t, \sigma_1, \dots)$ is \emph{locally optimal} if for every strategy tree $\mathfrak{s}'=(t, \sigma'_1, \dots)$ with same root sequence, and every $i>1$, the depth at which $\sigma_i$ and $\sigma_{i+1}$ first differ is greater or equal than the depth at which $\sigma_i$ and $\sigma'_{i+1}$ first differs.
-
-
-
-
-
+A finite or infinite strategy tree $\mathfrak{s}=(t, \sigma_1, \dots)$ is \emph{locally optimal} if for every strategy tree $\mathfrak{s}'=(t, \sigma'_1, \dots)$ with same root sequence, and every $i>1$, the depth at which $\sigma_i$ and $\sigma_{i+1}$ first differ is greater or equal than the depth at which $\sigma_i$ and $\sigma'_{i+1}$ first differs.
 The following Lemma, proved in \cite{bp} for finite strategy trees but whose proof extends straightforward to infinite strategy trees too, will turn out to be useful.%\footnote{This Lemma is . CHECK}
 
 \begin{lemma}\label{lemma:locallyoptimal}
@@ -108,7 +101,7 @@ For every finite or infinite strategy tree, there is a locally optimal strategy 
 
  The next Lemma  follows immediately from the definition of a strategy tree.
 \begin{lemma}\label{lemma:short_strategy}
-Let $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_k)$ be a strategy tree. Given the  game $\mathcal{X}(\sigma_1(\varepsilon), \dots, \sigma_k(\varepsilon))$ and a strategy for Constrainer given by always cutting at level $i$, Alternator wins  by playing as follows:
+Let $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_k)$ be a strategy tree. For the game $\mathcal{X}(\sigma_1(\varepsilon), \dots, \sigma_k(\varepsilon))$ and a strategy of Constrainer given by always cutting at level $i$, Alternator wins  by playing as follows:
 \begin{itemize}
 \item at first, Alternator plays $t$, then
 \item for each port $w$ at level $i$ of the multi context given by Constrainer's move, Alternator plugs in the tree given by her winning strategy $\mathcal{X}(\sigma_1(w), \dots, \sigma_k(w))$.
@@ -127,15 +120,17 @@ In particular, if from a certain $j<k$ on $\sigma_\ell(w)=\sigma_{\ell+1}(w)$, $
 %\end{lemma}
 
 \subsection{The main result}
+\label{sec:the main result}
 Everything now is ready to prove the main result of this paper.
 \begin{theorem}\label{theorem:main}
-Let $L$ be a regular tree language. The following conditions are equivalent:
+Let $L$ be a regular tree language given by a non-deterministic tree automaton $\A$. The following conditions are equivalent:
 \begin{enumerate}
 %\item The following identity is not satisfied: $(u_2w_2^\omega v)^\omega u_1w_1^\infty = (u_2w_2^\omega v)^\infty$ if $(u_1, u_2) \in V_L$ and $(w_1, w_2) \in V_L$
 %\item $L$ has unbounded limit alternation
-\item The strategy graph $G_L$ is recursive
+\item The strategy graph $G_L$ is recursive.
 \item $d_W(L) \geq \omega_1$
 \end{enumerate}
+In particular, since the graph $G_L$ is computable from the automaton $\A$, it is decidable whether the language accepted by $\A$ is of Wadge degree bigger or eqal than $\omega_1$.  
 \end{theorem}
 
 \begin{proof}

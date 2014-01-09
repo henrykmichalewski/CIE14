@@ -2,7 +2,7 @@
 
 \section{Preliminaries}
 \subsubsection*{Trees and contexts.}
-Given a finite alphabet $A$, a \emph{tree} over $A$ is a partial function $t: \{0,1\}^* \to A$ such that its domain $\dom(t)$ is prefix closed. A node of a tree $t$ is just an element $n \in \dom(t)$. A left child of a node $n$ of $t$ is the node $n0$, while its right child is $n1$. A leaf of a tree is a node without children. A tree  with infinitely many nodes is infinite. We denote by $T_A$ the class of all  trees over $A$ and $T^\infty_A$ of all infinite trees over $A$. A set of trees over $A$ is called a tree language, or simply a language.
+Given a finite alphabet $A$, a \emph{tree over $A$} is a partial function $t: \{0,1\}^* \to A$ such that its domain $\dom(t)$ is prefix closed. A node of a tree $t$ is an element $v \in \dom(t)$. A left child of a node $v$ of $t$ is the node $v0$, while its right child is $v1$. A leaf of a tree is a node without children. A tree is \emph{infinite} if it has infinitely many nodes. We denote by $T_A$ the fammily of all  trees over $A$ and by $T^\infty_A$ the family of all infinite trees over $A$. A set of trees over $A$ is called a tree language, or simply a language.
 A \emph{multi-context} over $A$ is a tree $c$ over $A \cup \{\star\}$, where 
 \begin{itemize} 
 \item $\star \notin A$, and 
@@ -29,8 +29,8 @@ Borel hierarchy are defined as follows with ${\bf\Sigma}^0_0(T^\infty_A)= \{\emp
 ${\bf\Pi}^0_0(T^\infty_A)=\{T^\infty_A \}$.
 \begin{itemize}
 \item ${\bf\Sigma}^0_1(T^\infty_A)$ is the class of open subsets of $T^\infty_A$, 
-\item ${\bf\Pi}^0_n(T^\infty_A)$ contains complements of sets from ${\bf\Sigma}^0_n(T^\infty_A)$, 
-\item ${\bf\Sigma}^0_{n+1}(T^\infty_A)$ contains countable unions of sets from ${\bf\Pi}^0_n(T^\infty_A)$. 
+\item ${\bf\Pi}^0_n(T^\infty_A)$ consists of complements of sets from ${\bf\Sigma}^0_n(T^\infty_A)$, 
+\item ${\bf\Sigma}^0_{n+1}(T^\infty_A)$ consists of countable unions of sets from ${\bf\Pi}^0_n(T^\infty_A)$. 
 \end{itemize}
 
 A much finer measure of the topological complexity is the \emph{Wadge degree} (see \cite[Chapter 21.E]{kechris}).
@@ -43,13 +43,11 @@ M$. The Wadge hierarchy is the partial order induced by $<_W$ on the
 equivalence classes given by $\equiv_W$. A language  $L$ is called {\em self dual} if it is equivalent 
 to its complement, otherwise it is called {\em non self dual}.
 
-
 Given a certain family of sets $\mathcal{C}$, we say that $M$ is $\mathcal{C}$-hard if $L
 \leq_W M$ for every $L \in \mathcal{C}$.   
 
 \subsubsection*{Algebra.}
-The Wadge hierarchy on the regular languages of infinite words is well understood thanks to a classification result by K. Wagner (\cite{wagner}). A natural algebraic interpration of Wagner's result can be found in \cite[Theorem 6.2]{pinperrin}. In the case of languages of infinite trees, the algebraic theory is not yet fully developed. As a general reference may serve papers \cite{blumensath}, \cite{bp}, \cite{bojtrees}, \cite{bojidziaszek}. For details of the approach applied in this paper refer to \cite[Section 3]{bp}. 
+The Wadge hierarchy on the regular languages of infinite words is well understood thanks to a classification result by K. Wagner (\cite{wagner}). In particular from the result one can derive an algorithm which decides whether a given regular language of infinite words is a Boolean combination of open sets. Being a Boolean combination of open sets is equivalent to being in ${\bf Delta^0_2}$ class in the context of regular languages of infinite words. This is not true for the regular languages of infinite trees (see \cite[Section 4.1]{bp} for an analysis of one special case and Proposition \ref{rem:example} in this paper).   
+A natural algebraic interpration of Wagner's result can be found in \cite[Theorem V.6.2]{pinperrin}. In the case of languages of infinite trees, the algebraic theory is not yet fully developed. As a general reference may serve papers \cite{blumensath,bp,bojtrees,bojidziaszek}. For details of the approach applied in this paper refer to \cite[Section 3]{bp}. 
 
-As in \cite{bp} family of all trees $T_A$ is divided into finitely many Myhill-Nerode equivalence classes $H_L$. Similarly, there are finitely many equivalence classes $V_L$ of contexts. Starting from an automaton accepting language $L$, one can compute families $H_L$ and $V_L$. The equivalence class of a tree $t$ or a context $v$ is denoted $\alpha_L(t)$, $\alpha_L(v)$, respectively. For a given tree $t$ and contexts $v_1,v_2$ multiplication of contexts and trees $v_1t$, $v_1v_2$ naturally induces multiplication between elements of $H_L$ and $V_L$. Similarly, for a given context $v$ the operation of infinite power $vv\ldots$ induces a mapping from $V_L$ to $H_L$. 
-
-
+As in \cite{bp} family of all trees $T_A$ is divided into finitely many Myhill-Nerode equivalence classes $H_L$. Similarly, there are finitely many equivalence classes $V_L$ of contexts. The same holds for multi-contexts with a fixed number of holes. Starting from an automaton accepting language $L$, one can compute families $H_L$ and $V_L$. The equivalence class of a tree $t$ or a context $v$ is denoted $\alpha_L(t)$, $\alpha_L(v)$, respectively. For a given tree $t$ and contexts $v_1,v_2$ multiplication of contexts and trees $v_1t$, $v_1v_2$ naturally induces multiplication between elements of $H_L$ and $V_L$. Similarly, for a given context $v$ the operation of infinite power $v^\infty = vv\ldots$ induces a mapping from $V_L$ to $H_L$. 
