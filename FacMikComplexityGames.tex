@@ -14,16 +14,9 @@ Let $L, M$ be two languages. Then  $L \leq_W M$ iff Player II has a winning stra
 From Borel determinacy (\cite{martin}),
 if both $L$ and $M$ are Borel, then $\mathcal{W}(L, M)$ is determined.
 As a consequence, a variant of Martin-Monk's result shows that $<_W$ is
-well-founded. The \emph{Wadge degree} for sets of finite Borel rank is
-inductively defined as follows. First, we remark that since every self-dual set $A$ is Wadge equivalent to the disjoint union of non self-dual set $B$ and its complement, it is enough to start associating a Wadge degree only to non self-dual sets and say that the Wadge degree of $A$ equals the Wadge degree of $B$. Hence, the mapping associating to each non self-dual set its Wadge degree is given by:
-\begin{itemize}
-\item $d_W(\emptyset)=d_W(\emptyset^\complement)=1$,
-\item $d_W(L)=\sup\{d_W(K)+1\colon K \text{ non self-dual}, K <_WL\}$ for $L>_W\emptyset$.
-\end{itemize}
-The
-height of the Wadge hierarchy of all tree languages (recognizable or
-not) of finite Borel rank is $\,{}^{\omega_1} \epsilon_0$ (see \cite{dup1}).
-
+well-founded. The \emph{Wadge degree} for sets of finite Borel rank can
+be %inductively 
+defined indutively. First, we remark that since every self-dual set $A$ is Wadge equivalent to the disjoint union of a certain non self-dual set $B$ and its complement $B^\complement$, it is enough to start associating a Wadge degree only to non self-dual sets and say that the Wadge degree of $A$ equals the Wadge degree of $B$. 
 For each degree there are exactly three equivalence
 classes with the same degree, represented by $L$, $L^\complement$ and
 $L^\pm$ --- the disjoint union of $L$ and $L^\complement$. %  = \{t \bigm | t(\epsilon) = c, t.0\in L \} \cup  \{t \bigm |
@@ -44,13 +37,14 @@ For instance, $\emptyset$ and complete open sets have sign $-$, while the whole 
 %${\bf \Sigma}^0_n$-complete sets have sign $-$, and ${\bf
   %\Pi}^0_n$-complete sets have sign $+$. 
   All self-dual sets by
-definition have sign $\pm$. Thus an ordinal $\alpha <\,
-{}^{\omega_1}\epsilon_0$ and a sign $\epsilon \in \{+,-,\pm\}$,
-determine a $\equiv_W$-class, denoted  $[\alpha]^\epsilon$. % For each $n>1$, ${\bf \Sigma}^0_n$-complete has signed Wadge degree $[\exp^{n-1}(1)]^-$, and  ${\bf \Pi}^0_n$-complete has thus signed degree $[\exp^{n-1}(1)]^+$, where $\exp(\alpha) = \omega_1^\alpha$ and $\exp^{k+1}(\alpha) = \omega_1^{\exp^k{\alpha}}$.
-In the same paper, Duparc defined the exact set-theoretical counterpart of the ordinal operations on signed Wadge degree of sum, multiplication by a countable ordinal, and (quasi) exponentiation of base $\omega_1$. In this way he was able to generate from the empty set and its complement canonical complete sets for each signed Wadge degree $[\alpha]^\epsilon$, with $\alpha <\,
-{}^{\omega_1}\epsilon_0$. 
+definition have sign $\pm$. Let $\kappa$ be the length of Wadge hierarchy of Borel sets of finite rank. 
+Thus an ordinal $\alpha <\kappa$
+%{}^{\omega_1}\epsilon_0$ where , and a sign $\epsilon \in \{+,-,\pm\}$,
+determine a $\equiv_W$-class, denoted  $[\alpha]^\epsilon$ for $\epsilon\in \{+,-,\pm\}$. % For each $n>1$, ${\bf \Sigma}^0_n$-complete has signed Wadge degree $[\exp^{n-1}(1)]^-$, and  ${\bf \Pi}^0_n$-complete has thus signed degree $[\exp^{n-1}(1)]^+$, where $\exp(\alpha) = \omega_1^\alpha$ and $\exp^{k+1}(\alpha) = \omega_1^{\exp^k{\alpha}}$.
+In the same paper,  in the context of Wadge degrees, Duparc defined  set-theoretical counterparts of ordinal multiplication by a countable ordinal, and (quasi) exponentiation of base $\omega_1$. % In this way he was able to generate from the empty set and its complement canonical complete sets for each signed Wadge degree $[\alpha]^\epsilon$, with $\alpha <\,
+%{}^{\omega_1}\epsilon_0$. 
 %Because of lack of space, we do not present such constructions, but we give some intuitions on  some of those operations and sets from the perspective of Wadge games (cf. for instance the description in \cite{dup3}). 
-From now on with $[\alpha]^\epsilon$ we also denote the canonical sets of Wadge degree generated with Duparc's operations. We present more details of Duparc's construction in the Appendix.
+From now on with $[\alpha]^\epsilon$ we also denote the canonical sets of Wadge degree generated with Duparc's operations. We present some details of Duparc's construction in the Appendix. 
 %%%%%%%%%
 %CUTTING
 %%%%%%%%%
@@ -59,7 +53,7 @@ From now on with $[\alpha]^\epsilon$ we also denote the canonical sets of Wadge 
 %\subsection{Delayed cutting games}
 Below we define a family of two-player games of perfect information, called \emph{cutting games}. These games were
 introduced in \cite{bp}. For the argument in \cite{bp} the most important was the finite version of the game. In the present paper 
-we will consider both infinite and finite versions of this game. % and some variations of the finite games from \cite{bp}. These variations we call \emph{delayed cutting games}. 
+we will consider both infinite and finite versions of the cutting game. % and some variations of the finite games from \cite{bp}. These variations we call \emph{delayed cutting games}. 
 
 Let $L_i$ ($i=1,2,\dots$) are languages over the alphabet $A$, and $p$ is a prefix over the alphabet $A$. 
 The \emph{simple cutting game} of length $k$, denoted $\mathcal{H}^p_k(L_1,\ldots,L_k)$ is played by two players, Constrainer and Alternator. 

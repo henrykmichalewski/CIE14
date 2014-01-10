@@ -1,5 +1,5 @@
 % !TEX root = FacMik.tex
-\section{A characterization of regular languages of Wadge degree bigger or equal $\omega_1$}
+\section{A characterization of languages of uncountable degree}
 \subsubsection*{Games on types and strategy trees.}
 %We recall that, given a language $L$, the set $H_L$ is the set of tree types, and the set $V_L$ of context types of $L$. Both are finite when $L$ is regular. 
 Following \cite{bp}, for a given regular language of trees $L$, a prefix $p$ and types $h_i\in H_L$ ($i=1,2,\dots$) we define games on types $\mathcal{H}^p_k(h_1,\dots,h_k)$ and $\mathcal{H}^p_\infty(h_1,h_2,\dots)$. The Constrainer plays as in the simple and infinite cutting games and the task of the Alternator is to play in the $i$--th round a tree of type $h_i$, that is an element of $\alpha_L^{-1}(h_i)$. % If the prefix $p$ is empty we just write $\mathcal{H}_\infty(h_1,h_2,\dots)$ and $\mathcal{H}(h_1, \dots, h_k)$ respectively.
@@ -148,5 +148,5 @@ This means that there is a strategy tree $\mathfrak{s}=(t, \sigma_1, \dots, \sig
 for some $k, k'$ , with $k < k' \leq j$.
 
 Let us consider the game $\mathcal{H}( \sigma_1(\varepsilon), \dots, \sigma_j(\varepsilon))$ where at first Alternator plays $t$ and then Constrainer uses the strategy given by cutting always at level $i+1$. We can therefore apply Lemma \ref{lemma:short_strategy} and assume that Alternator plays the winning strategy described there. This implies that the trees played at round $k$ and $k'$ are the same, say $t'$. But by local consistency, since $\sigma_k(\varepsilon)\neq \sigma_{k'}(\varepsilon)$, the tree $t'$ should have two different types, a contradiction. We therefore conclude that limit alternation of $\mathfrak{S}$ is unbounded. 
-See \ref{figure:filling} in the Appendix.
+See Figure \ref{figure:consistency} in the Appendix.
 \end{proof}
