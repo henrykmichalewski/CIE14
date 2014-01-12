@@ -24,9 +24,9 @@ $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_k)$ where
 \end{itemize}
 An  infinite strategy tree $\mathfrak{s}=(t, \sigma_1, \sigma_2, \dots )$ is defined analogously.
 \end{definition}
-The root sequence of a strategy tree $\mathfrak{s}=(t, (\sigma_i : i < \alpha))$ is the sequence of types $(\sigma_i(\varepsilon): i < \alpha)$.  We define the \emph{alternation} of a sequence $(h_1,\dots,h_\ell)$ of types as the cardinality of the set $\{ i: h_i\neq h_{i+1} \}$. The same definition applies to infinite sequences of types. Let $\mathfrak{s}$ be a finite strategy tree. The \emph{root alternation} of $\mathfrak{s}$ is the alternation of the root sequence, while the limit alternation of $\mathfrak{s}$ is the maximal number $k$ such that infinitely many subtrees of $\mathfrak{s}$ have root alternation at least $k$. We say that a set  $\mathfrak{S}$ of finite strategy trees has \emph{bounded root alternation} if there is a  $k$ such that the root alternation of each $\mathfrak{s} \in \mathfrak{S}$ is at most $k$, unbounded otherwise. Analogously for limit alternation.
+The root sequence of a strategy tree $\mathfrak{s}=(t, \sigma_1, \sigma_2, \dots )$ is the sequence of types $(\sigma_1(\varepsilon), \sigma_2(\varepsilon), \dots)$.  We define the \emph{alternation} of a sequence $(h_1,\dots,h_\ell)$ of types as the cardinality of the set $\{ i: h_i\neq h_{i+1} \}$. The same definition applies to infinite sequences of types. Let $\mathfrak{s}$ be a finite strategy tree. The \emph{root alternation} of $\mathfrak{s}$ is the alternation of the root sequence, while the limit alternation of $\mathfrak{s}$ is the maximal number $k$ such that infinitely many subtrees of $\mathfrak{s}$ have root alternation at least $k$. We say that a set  $\mathfrak{S}$ of finite strategy trees has \emph{bounded root alternation} if there is a  $k$ such that the root alternation of each $\mathfrak{s} \in \mathfrak{S}$ is at most $k$, unbounded otherwise. Analogously for limit alternation.
 
-A finite or infinite strategy tree $\mathfrak{s}=(t, \sigma_1, \dots)$ is \emph{locally optimal} if for every strategy tree $\mathfrak{s}'=(t, \sigma'_1, \dots)$ with same root sequence, and every $i>1$, the depth at which $\sigma_i$ and $\sigma_{i+1}$ first differ is greater or equal than the depth at which $\sigma'_i$ and $\sigma'_{i+1}$ first differs.
+A finite or infinite strategy tree $\mathfrak{s}=(t, \sigma_1, \dots)$ is \emph{locally optimal} if for every strategy tree $\mathfrak{s}'=(t, \sigma'_1, \dots)$ with same root sequence, and every $i>1$, the depth at which $\sigma_i$ and $\sigma_{i+1}$ first differ is greater or equal than the depth at which $\sigma'_i$ and $\sigma'_{i+1}$ first differ.
 The next Proposition is very important technical point of \cite{bp}. 
 \begin{proposition}[\cite{bp}]\label{prop:locality}
  For a regular tree language $L$, if $\mathfrak{S}$ is a set of locally optimal finite strategy trees with both root and limit unbounded alternation, then the strategy graph $G_L$ is recursive.
@@ -45,43 +45,40 @@ The next proposition will be important in the rest of the paper. It establishes 
 Notice, that nodes at odd depth represent Alternator's moves (according to $f$) and are therefore labelled by trees, while nodes at even depth represent Constrainer's move and are thus labelled by prefixes. From now on, we always identify $f$ and the aforementioned tree.
 \begin{claim}\label{claim:strategy}
 For every node $v$ of $f$ labelled by a prefix $p$, 
-there is a sequence of strategy trees $\mathfrak{S}_v=(\mathfrak{s}^v_\ell: \ell < \omega)$ such that for each $\ell$
+there is an infinite sequence of strategy trees $(\mathfrak{s}^v_\ell: \ell < \omega)$ such that for each $\ell$
 \begin{enumerate}
 \item $\mathfrak{s}^v_\ell=(t, \sigma_1, \dots, \sigma_\ell)$, with the type $\sigma_{2k+1}(\varepsilon)$ included in $L$ and the type  $\sigma_{2k}(\varepsilon)$ included  $L^\complement$ if $v$ is at depth $2i$ with $i$ even, else dually. In particular this means that  $\sigma_{2k+1}(\varepsilon) \neq \sigma_{2k}(\varepsilon)$;
 \item $\mathfrak{s}^n_{\ell+1}$ extends $\mathfrak{s}^v_\ell$, that is  $\mathfrak{s}^v_{\ell+1}=(t, \sigma_1, \dots, \sigma_\ell, \sigma_{\ell+1})$ and $\mathfrak{s}^n_\ell=(t, \sigma_1, \dots, \sigma_\ell)$.
 \end{enumerate}
 \end{claim}
-Given the Claim above, from point 1 we have that
-for each node $n$ labelled by a prefix $p$, and each $\ell=1,2,\dots$, $\mathfrak{s}^v_\ell$ has root alternation $\ell$ and defines a winning strategy for Alternator in $\mathcal{H}^p_\ell(L, L^\complement)$ if $v$ is at depth $2i$ with $i$ even, in $\mathcal{H}^p_\ell(L^\complement, L)$ otherwise. 
+Given the Claim, from Property 1 we have that
+for each node $v$ labelled by a prefix $p$, and each $\ell=1,2,\dots$, $\mathfrak{s}^v_\ell$ has root alternation $\ell$ and defines a winning strategy for Alternator in $\mathcal{H}^p_\ell(L, L^\complement)$ if $v$ is at depth $2i$ with $i$ even, in $\mathcal{H}^p_\ell(L^\complement, L)$ otherwise. 
 Let \[ \mathfrak{s}^\varepsilon_\ell = (t, \sigma_1, \dots, \sigma_\ell)\ \mbox{for}\ \ell=1,2,\dots.\] The required   
 infinite stategy tree is defined as 
 \[ \mathfrak{s}^\infty = (t, \sigma_1, \dots ). \]
 It remains to prove the Claim.
-Firstly, we describe an inductive procedure that for each $\ell$ assign to each node $v$ of $f$ labelled by a prefix a strategy tree $\mathfrak{s}^v_\ell$.
-We then verify that for each node $v$ of $f$, the obtained sequence $(\mathfrak{s}^v_1, \mathfrak{s}^v_2, \dots)$ satisfy
-the properties of the Claim. 
-
-We start by describing the procedure, and already verify that it satisfies Property 1 of the Claim. First notice that given an infinite sequence of type trees $(\sigma_1, \dots)$, by compactness there is a converging subsequence $(\sigma'_1, \dots)$. We assume that every time we have to choose  
-a converging subsequence $(\sigma'_1, \dots)$ of a given sequence $(\sigma_1, \dots)$, we always choose the same sequence
+Firstly, by induction with respect to $\ell=1,2,\dots$ we will assign a strategy tree $\mathfrak{s}^v_\ell$ to each node $v$ of $f$ labelled by a prefix. % We then verify that for each such node $v$ of $f$, the obtained sequence $(\mathfrak{s}^v_1, \mathfrak{s}^v_2, \dots)$ satisfy the properties of the Claim. 
+In the process of inductive construction we will also verify that Property 1 of the Claim is satisfied. Verification of Property 2 will be done later. Let us start from a remark that given an infinite sequence of type trees $(\sigma_1, \dots)$, by compactness there is a converging subsequence $(\sigma'_1, \dots)$. We assume that every time we have to choose  
+a converging subsequence $(\sigma'_1, \dots)$ of a given sequence $(\sigma_1, \dots)$, we always choose the same subsequence and denote it's limit as 
 $\limit(\sigma_1, \dots)$. We also assume that given a tree $t$, we have fixed an enumeration $(p_1, \dots)$ of all its prefixes such 
-that $p_k$ converge to the tree $t$.
+that sequence $(p_k)_{k=1,2,\dots}$ converge to the tree $t$.
+
 For $\ell=1$, 
-it is enough to take for each node $n$ and prefix label $p$, $\mathfrak{s}^v_1=(t, \sigma_t)$, where $t$ is given by applying $f$ to the considered position and $\sigma_t$ is defined by formula (\ref{formula:sigmat}). By choice of $\sigma_t$, Property 1 is satisfied.
-For $\ell>1$ we proceed as follows. We assume the construction performed for $\ell-1$. Fix any node $v$ labelled by a prefix $p$. Assume the answer given by $f$  at the position in the game given by the path to the root to node $v$ is $t$. To every prefix $p$ of $t$ corresponds a child $w$ of $v$ to which we already associated a strategy tree $\mathfrak{s}^w_{\ell-1}=(t^p, \sigma^p_{2}, \dots, \sigma^p_{\ell})$. 
+it is enough to take for each node $v$  \[ \mathfrak{s}^v_1=(t, \sigma_t),\] where $t$ is given by applying $f$ to the considered position and $\sigma_t$ is defined by formula (\ref{formula:sigmat}) at the beggining of this Section. By choice of $\sigma_t$, Property 1 is satisfied. For $\ell>1$ we proceed as follows. We assume the construction performed for $\ell-1$. Fix any node $v$ labelled by a prefix $p$. Assume that a tree $t$ is the answer given by $f$  at the position in the game given by the path from the root to the node $v$. To every prefix $p$ of $t$ corresponds a child $w$ of $v$ to which we already associated a strategy tree $\mathfrak{s}^w_{\ell-1}=(t^p, \sigma^p_{2}, \dots, \sigma^p_{\ell})$. 
 Let us thence consider the sequence $(p_1, \dots)$, with limit $t$ and the sequences
 $(t^{p_1}, \dots)$, $(\sigma^{p_1}_2\dots)$, $\dots,$  $(\sigma^{p_1}_{\ell}\dots)$.  The limits $\limit(\sigma^{p_k}_2),\dots,
-\limit(\sigma^{p_k}_{\ell})$ were chosen in advance and are equal $t^*, \sigma^*_2, \dots, \sigma^*_\ell$. Since each $t^{p_k}$ extends $p_k$, the limit $t^*$ of  $(t^{p_1},t^{p_2},\dots)$ is $t$.
+\limit(\sigma^{p_k}_{\ell})$ were chosen in advance and are equal $\sigma^*_2, \dots, \sigma^*_\ell$. Since each $t^{p_k}$ extends $p_k$, the limit $t^*$ of  $(t^{p_1},t^{p_2},\dots)$ is $t$.
 Now, for each $p$, the type trees $(\sigma^p_{2}, \dots, \sigma^p_{\ell})$
 are locally consistent with $t^p$. Furthermore, given a sequence of trees $(t_1, \dots)$  that converges to $t^*$ and a sequence of type trees $(\sigma_1, \dots)$  that converges to $\sigma^*$, if $\sigma_k$ is locally consistent with $t_k$ for every k, then $\sigma^*$ is locally consistent with $t^*$.
 %Therefore, by Lemma \ref{lemma:limit} 
-From this fact follows that the limits $\sigma^*_2, \dots, \sigma^*_k$ are locally consistent with $t$. Finally, define $\sigma^*_1$ to be $\sigma_t$ defined by formula (\ref{formula:sigmat}). We have just proved that
+From this fact follows that the limits $\sigma^*_2, \dots, \sigma^*_k$ are locally consistent with $t$. Finally, define $\sigma^*_1$ to be $\sigma_t$ as in formula (\ref{formula:sigmat}). We have just proved that
 $\mathfrak{s}^v_\ell = (t, \sigma^*_1, \dots, \sigma^*_\ell)$
 is a strategy tree. From induction hypothesis together with definition of $\sigma_t$ and preservation of Property 1 under limits follows that $\mathfrak{s}^v_\ell$ also 
 satisfies Property 1. 
 
 We now verify that the described procedure preserves Property 2. For $\ell=1$ there is nothing to check. For the induction step, we reason as follows. Assume the Property holds for each node and for each $k<\ell$. Now, let us consider an arbitrary node $v$. We have to prove that $\mathfrak{s}^v_{\ell+1}$ extends $\mathfrak{s}^v_{\ell}$. 
 By induction hypothesis,  $\mathfrak{s}^w_{\ell-1}=(t^p, \sigma^p_{2}, \dots, \sigma^p_{\ell})$ and
-$\mathfrak{s}^w_{\ell}=(t^p, \sigma^p_{2}, \dots, \sigma^p_{\ell}, \sigma^p_{\ell+1})$, for every node $w$  in the described procedure. Since the limits have been fixed in advance, we have that $\mathfrak{s}^w_{\ell}=(t, \sigma_t, \sigma^*_2, \dots, \sigma^*_\ell)$ and $\mathfrak{s}^n_{\ell+1}=(t, \sigma_t, \sigma^*_2, \dots, \sigma^*_\ell, \sigma^*_{\ell+1})$, meaning that the latter extends the former. This concludes the proof of the claim.
+$\mathfrak{s}^w_{\ell}=(t^p, \sigma^p_{2}, \dots, \sigma^p_{\ell}, \sigma^p_{\ell+1})$, for every node $w$  in the described procedure. Since the limits have been fixed in advance, we have that $\mathfrak{s}^w_{\ell}=(t, \sigma_t, \sigma^*_2, \dots, \sigma^*_\ell)$ and $\mathfrak{s}^v_{\ell+1}=(t, \sigma_t, \sigma^*_2, \dots, \sigma^*_\ell, \sigma^*_{\ell+1})$, meaning that the latter extends the former. This concludes the proof of the Claim.
  \end{proof}
  
 Using the above Proposition, we can generalize to infinite games Proposition 5.2 from \cite{bp}:
@@ -106,7 +103,7 @@ Let $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_\ell)$ be a strategy tree. For the
 \item at first, Alternator plays $t$, then
 \item for each port $w$ at level $i$ of the multi context given by Constrainer's move, Alternator plugs in the tree given by her winning strategy $\mathcal{H}(\sigma_1(w), \dots, \sigma_\ell(w))$.
 \end{itemize}
-In particular, if from a certain $j<\ell$ on $\sigma_k(w)=\sigma_{k+1}(w)$, $j\leq k < \ell$, then for each round $k$ such that $j< k < \ell$ she always plugs in the same tree of type $\sigma_j(w)$ chosen at round $j$.
+In particular, if from a certain $j<\ell$ on $\sigma_k(w)=\sigma_{k+1}(w)$, $j\leq k < \ell$, then for each round $k$ such that $j< k < \ell$ Alternator always plugs in the same tree of type $\sigma_j(w)$ chosen at round $j$.
 \end{lemma}
 \subsubsection*{An Effective Characterization.}
 \label{sec:the main result}
@@ -125,28 +122,28 @@ In particular, since the graph $G_L$ is computable from the automaton $\A$, it i
 %The implication $(1) \Rightarrow (2)$ is proved in \cite{bp}.  
 We start by showing that $(1) \Rightarrow (2)$. Assume the strategy graph is recursive. This means that there exists a strongly connected component that contains two nodes $(v, h)$ and $(v', h')$ with $h \neq h'$. 
 Thanks to Proposition \ref{proposition:path to edge}, if there exists a path between $(v, h)$ and $(v', h')$, there is also an edge between $(v, h)$ and $(v', h')$. 
-Moreover, for vertices $(v_1,h_1),(v_2,h_2),\dots$, if for every $i=1,2,\dots$ there is an edge from $(v_i, h_i)$ to $(v_{i+1}, h_{i+1})$, this means that Alternator has a winning strategy in $\mathcal{H}(h_1,h_2,\dots)$. So, take $(v_i, h_i)= (v,h)$ for $i$ even, and $(v_i, h_i)= (v',h')$ for $i$ odd. We have that Alternator has a winning strategy in $\mathcal{H}^\varepsilon_\infty(h, h')$. By Proposition \ref{prop:tree_to_types}
+Moreover, for vertices $(v_1,h_1),(v_2,h_2),\dots$, if for every $i=1,2,\dots$ there is an edge from $(v_i, h_i)$ to $(v_{i+1}, h_{i+1})$, this means that Alternator has a winning strategy in $\mathcal{H}(h_1,h_2,\dots)$. So, take $(v_i, h_i)= (v,h)$ for $i$ even, and $(v_i, h_i)= (v',h')$ for $i$ odd. This shows that Alternator has a winning strategy in $\mathcal{H}^\varepsilon_\infty(h, h')$. By Proposition \ref{prop:tree_to_types}
 Alternator has a winning strategy in  $\mathcal{H}^\varepsilon_\infty(L, L^\complement)$.
 
 
-Now we turn to the implication  $(2) \Rightarrow (1)$. 
+Now turn to the implication  $(2) \Rightarrow (1)$. 
 By Propositions \ref{prop:infinity}  and \ref{prop:locality}, it is enough to verify that 
- if Alternator has a winning strategy in $\mathcal{H}^\varepsilon_\infty(L, L^\complement)$ then there is a set of locally optimal finite strategy trees $\mathfrak{S}$ with both root and limit unbounded alternation. 
+ if Alternator has a winning strategy in $\mathcal{H}^\varepsilon_\infty(L, L^\complement)$ then there is a set $\mathfrak{S}$ of locally optimal finite strategy trees  with both root and limit unbounded alternation. 
  
 Assume Alternator has a winning strategy $f$ in  $\mathcal{H}^\varepsilon_\infty(L, L^\complement)$. From Proposition \ref{prop:types} there is a strategy tree $\mathfrak{s}^\infty = (t,\sigma_1,\dots) $ with infinite root alternation. 
  By Lemma \ref{lemma:locallyoptimal} we can assume that $\mathfrak{s}^\infty$ is  locally optimal. Let us define 
 \[ \mathfrak{S}= \{ (t,\sigma_1,\dots,\sigma_k): k=1,2,\dots\}. \]
 Note that each element of $\mathfrak{S}$ is locally optimal.
 Now, assume limit alternation of $\mathfrak{S}$ is bounded.
-This means that there is a strategy tree $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_j)$ in  $ \mathfrak{S}$ and a finite set of nodes of $t$ satisfying the following properties:
+This means that there is a strategy tree $\mathfrak{s}=(t, \sigma_1, \dots, \sigma_j)$ in  $ \mathfrak{S}$ and a finite set $X$ of nodes of $t$ satisfying the following properties:
 \begin{itemize}
 %\item there is a node $n^* \in \{n_1, \dots, n_\ell\}$ with two children $m_1, m_2 \in \dom(t)|_i \setminus \{n_1, \dots, n_\ell\}$
-\item the root is included in the set,
-\item $\sigma_k(n)\neq \sigma_{k'}(n)$, for every node $n$ in the set,
-\item $\sigma_k(n)= \sigma_{k'}(n)$, for every node $n$ not in the set,
+\item the root is included in the set $X$,
+\item the set $X$ is included in the first $i$ levels of the tree $t$, 
+\item $\sigma_k(n)\neq \sigma_{k'}(n)$, for every node $n$ in the set $X$,
+\item $\sigma_k(n)= \sigma_{k'}(n)$, for every node $n$ not in the set $X$,
 \end{itemize}
 for some $k, k'$ , with $k < k' \leq j$.
 
-Let us consider the game $\mathcal{H}( \sigma_1(\varepsilon), \dots, \sigma_j(\varepsilon))$ where at first Alternator plays $t$ and then Constrainer uses the strategy given by cutting always at level $i+1$. We can therefore apply Lemma \ref{lemma:short_strategy} and assume that Alternator plays the winning strategy described there. This implies that the trees played at round $k$ and $k'$ are the same, say $t'$. But by local consistency, since $\sigma_k(\varepsilon)\neq \sigma_{k'}(\varepsilon)$, the tree $t'$ should have two different types, a contradiction. We therefore conclude that limit alternation of $\mathfrak{S}$ is unbounded. 
-See Figure \ref{figure:consistency} in the Appendix.
+Let us consider the game $\mathcal{H}( \sigma_1(\varepsilon), \dots, \sigma_j(\varepsilon))$ where at first Alternator plays $t$ and then Constrainer uses the strategy given by cutting always at level $i+1$. We can therefore apply Lemma \ref{lemma:short_strategy} and assume that Alternator plays the winning strategy described there. This implies that the trees played at round $k$ and $k'$ are the same, say $t'$. But by local consistency, since $\sigma_k(\varepsilon)\neq \sigma_{k'}(\varepsilon)$, the tree $t'$ should have two different types, a contradiction. We therefore conclude that limit alternation of $\mathfrak{S}$ is unbounded. The method of proof is illustrated by Figure \ref{figure:consistency} in the Appendix .
 \end{proof}

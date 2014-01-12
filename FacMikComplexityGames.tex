@@ -13,19 +13,19 @@ Let $L, M$ be two languages. Then  $L \leq_W M$ iff Player II has a winning stra
 \end{lemma}
 From Borel determinacy (\cite{martin}),
 if both $L$ and $M$ are Borel, then $\mathcal{W}(L, M)$ is determined.
-As a consequence, a variant of Martin-Monk's result shows that $<_W$ is
-well-founded. The \emph{Wadge degree} for sets of finite Borel rank can
+The ordering $<_W$ restricted to the Borel sets is
+well-founded (see \cite[Theorem 21.15]{kechris}). The \emph{Wadge degree} for sets of finite Borel rank can
 be %inductively 
-defined indutively. First, we remark that since every self-dual set $A$ is Wadge equivalent to the disjoint union of a certain non self-dual set $B$ and its complement $B^\complement$, it is enough to start associating a Wadge degree only to non self-dual sets and say that the Wadge degree of $A$ equals the Wadge degree of $B$. 
+defined indutively. First, we remark that since every self dual set $A$ is Wadge equivalent to the disjoint union of a certain non self dual set $B$ and its complement $B^\complement$, it is enough to start associating a Wadge degree only to non self dual sets and say that the Wadge degree of $A$ equals the Wadge degree of $B$. 
 For each degree there are exactly three equivalence
 classes with the same degree, represented by $L$, $L^\complement$ and
 $L^\pm$ --- the disjoint union of $L$ and $L^\complement$. %  = \{t \bigm | t(\epsilon) = c, t.0\in L \} \cup  \{t \bigm |
 %t(\epsilon) \neq c, t.0\notin L \}$ for some non self-dual set $L$ and
 %$c\in A$. 
 Clearly $L, L^\complement <_W L^\pm$ and
-$L^\pm$ is self-dual.
+$L^\pm$ is self dual.
 
-In \cite{dup1}, J. Duparc showed that for non self-dual sets, it is possible to determine its sign, $+$
+In \cite{dup1}, J. Duparc showed that for non self dual sets, it is possible to determine its sign, $+$
 or $-$, which specifies precisely the $\equiv_W$-class. 
 %For a set $T$ whose Wadge degree has countable cofinality, the sign
 %is $+$ if $T$ is Wadge equivalent to the set of trees over $A
@@ -36,7 +36,7 @@ For instance, $\emptyset$ and complete open sets have sign $-$, while the whole 
 %For sets of cofinality $\omega_1$, the definition is more complicated, but
 %${\bf \Sigma}^0_n$-complete sets have sign $-$, and ${\bf
   %\Pi}^0_n$-complete sets have sign $+$. 
-  All self-dual sets by
+  All self dual sets by
 definition have sign $\pm$. Let $\kappa$ be the length of Wadge hierarchy of Borel sets of finite rank. 
 Thus an ordinal $\alpha <\kappa$
 %{}^{\omega_1}\epsilon_0$ where , and a sign $\epsilon \in \{+,-,\pm\}$,
@@ -44,7 +44,7 @@ determine a $\equiv_W$-class, denoted  $[\alpha]^\epsilon$ for $\epsilon\in \{+,
 In the same paper,  in the context of Wadge degrees, Duparc defined  set-theoretical counterparts of ordinal multiplication by a countable ordinal, and (quasi) exponentiation of base $\omega_1$. % In this way he was able to generate from the empty set and its complement canonical complete sets for each signed Wadge degree $[\alpha]^\epsilon$, with $\alpha <\,
 %{}^{\omega_1}\epsilon_0$. 
 %Because of lack of space, we do not present such constructions, but we give some intuitions on  some of those operations and sets from the perspective of Wadge games (cf. for instance the description in \cite{dup3}). 
-From now on with $[\alpha]^\epsilon$ we also denote the canonical sets of Wadge degree generated with Duparc's operations. We present some details of Duparc's construction in the Appendix. 
+From now on $[\alpha]^\epsilon$ will also denote the canonical sets of Wadge degree generated with Duparc's operations. We present some details of Duparc's construction in the Appendix. 
 %%%%%%%%%
 %CUTTING
 %%%%%%%%%
@@ -61,7 +61,8 @@ For each $i \in \{1, \dots, k \}$ the $i$-th round of the game is played as foll
 \begin{itemize}
 \item Alternator chooses a tree $t_i \in L_i$ extending the prefix chosen in the previous round by the Constrainer; in the first round of the game Alternator must choose an extension of the given prefix $p$,
 \item Constrainer chooses a prefix of the tree $t_i$.
-\item If Alternator cannot move, she loses, if she manages to survive $k$ rounds, then she wins.
+\item If Alternator cannot move, she loses, but if she survives k rounds then she wins.
+% If Alternator cannot move, she loses, if she manages to survive $k$ rounds, then she wins.
 \end{itemize}
 The \emph{infinite cutting game}, denoted by $\mathcal{H}^p_\infty(L_1,\dots)$, is played just like a simple game but without the restriction to a fixed given number of rounds. Alternator wins iff she can make infinitely many moves.
 
@@ -71,7 +72,7 @@ The mini game goes as follows. Firstly, Alternator chooses a tree $t \in X$. The
 
 When $L_{2i}=L$ and $L_{2i+1}=L^\complement$, then we simply write $\mathcal{H}^p_k(L, L^\complement), \mathcal{H}^p_\infty(L, L^\complement)$ and  $\mathcal{H}^{X}_\omega(L, L^\complement)$.
 It was verified in \cite{bp} that a given language $M$ has a Wadge degree less than $\omega$ iff Constrainer has a winning strategy in $\mathcal{H}^\varepsilon_k(M, M^\complement)$, for all but finitely many $k<\omega$.
-In \cite{bp} it was also remarked that the language $L$ described in Proposition \ref{rem:example}, even  if it is such that Alternator has a winning strategy in every corresponding finite cutting game, she looses the infinite one.
+In \cite{bp} it was also remarked that the language $L$ described in \cite[Section 4.1]{bp} and in Proposition \ref{rem:example} in the Appendix, even  if it is such that Alternator has a winning strategy in every corresponding finite cutting game, she looses the infinite one.
 In the next two propositions we establish link between delayed cutting games and infinite Wadge degrees on the one hand, and infinite simple cutting games and uncountable Wadge degrees on the other hand.
 % we provide the expected explanation of this fact.
 \begin{proposition}\label{prop:omega} Let $L$ be a tree language, $[\omega]^+ \leq_W L$ iff Alternator has a winning strategy in $\mathcal{H}^{L}_\omega(L^\complement, L)$. 
@@ -79,5 +80,5 @@ In the next two propositions we establish link between delayed cutting games and
 \begin{proposition}\label{prop:infinity} Let $L$ be a tree language. For every prefix $p$,
 $d_W([p]^{-1}L) \geq \omega_1$ iff Alternator has a winning strategy in $\mathcal{H}^p_\infty(L, L^\complement)$. 
 \end{proposition}
-The proofs of the previous Propositions \ref{prop:omega} and \ref{prop:infinity} are in the Appendix. 
+The proofs of Propositions \ref{prop:omega} and \ref{prop:infinity} are in the Appendix. 
 
